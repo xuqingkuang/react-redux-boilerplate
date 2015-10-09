@@ -1,0 +1,47 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "0.0.1",
+  "description": "React Reflux Boilerplate",
+  "homepage": "https://github.com/xuqingkuang/react-redux-boilerplate",
+  "author": {
+    "name": "XQ Kuang",
+    "email": "xuqingkuang@qq.com"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "es6",
+    "babel",
+    "boilerplate",
+    "gulp",
+    "express"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuqingkuang/react-redux-boilerplate"
+  },
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-redux": "^3.1.0",
+    "react-router": "^0.13.3",
+    "redux": "^3.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "del": "^2.0.2",
+    "express": "^4.13.3",
+    "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
+    "gulp-minify-html": "^1.0.4",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.1.1",
+    "redux-devtools": "^2.1.5",
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.3.0"
+  }
+}
