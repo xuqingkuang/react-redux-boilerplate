@@ -45,6 +45,12 @@ gulp.task("dev-server", () => {
     }
     console.log(`Listening at http://${config.host}:${config.port}`);
   });
+
+  /* Handle Ctrl + C pressed in Docker */
+  process.on('SIGINT', () => {
+    console.log("Exiting...");
+    process.exit();
+  });
 });
 
 /*

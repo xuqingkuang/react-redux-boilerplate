@@ -3,8 +3,8 @@ import {Router, Route, IndexRoute} from 'react-router';
 import { browserHistory } from 'react-router'
 
 import Layout from './components/layout';
-import NotFoundPage from './pages/not-found';
-import HomePage from './pages/home'
+import NotFoundPage from './components/not-found';
+import HomePage from './components/home'
 
 const routes = (
   <Router history={browserHistory}>
