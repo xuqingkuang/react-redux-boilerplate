@@ -1,7 +1,4 @@
-import React from 'react';
-import Router from 'react-router';
+import ReactDOM from 'react-dom'
 import routes from './routes';
 
-Router.run(routes, (Handler) => {
-  return React.render(<Handler />, document.body);
-});
+ReactDOM.render(routes, document.getElementById('site'))

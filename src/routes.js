@@ -1,17 +1,18 @@
 import React from 'react';
-import { Route, DefaultRoute, NotFoundRoute } from 'react-router';
+import {Router, Route, IndexRoute} from 'react-router';
+import { browserHistory } from 'react-router'
 
 import Layout from './components/layout';
 import NotFoundPage from './pages/not-found';
-
-import Home from './pages/home'
+import HomePage from './pages/home'
 
 const routes = (
-  <Route handler={Layout}>
-    <Route name="home" handler={Home} path="/" addHandlerKey={true} />
-    <DefaultRoute handler={Home} />
-    <NotFoundRoute handler={NotFoundPage} />
-  </Route>
+  <Router history={browserHistory}>
+    <Route path="/" component={Layout}>
+      <IndexRoute component={HomePage} />
+    </Route>
+    <Route path="*" component={NotFoundPage} />
+  </Router>
 );
 
 export default routes;

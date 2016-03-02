@@ -18,7 +18,7 @@ const devCompiler             = webpack(webpackConfig)
 
 const config = {
   port: 8000,
-  host: 'localhost',
+  host: '0.0.0.0',
   minifyHTML: {
     comments: true,
     spare: true
@@ -47,7 +47,7 @@ gulp.task("dev-server", () => {
   });
 });
 
-/* 
+/*
  * Production tasks
  */
 
