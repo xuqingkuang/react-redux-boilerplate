@@ -26,8 +26,8 @@ module.exports = {
   module: {
     loaders: [
       {test: /.*\.json$/, loader: 'json'},
-      {test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader"},
-      {test: /\.js$/, loader: 'babel-loader' }
+      {test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file"},
+      {test: /\.js$/, loader: 'babel', exclude: /node_modules/, include: __dirname}
     ]
   }
 }

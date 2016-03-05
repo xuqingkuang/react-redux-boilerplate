@@ -8,11 +8,12 @@ Another template that makes React and redux web app developmet easier.
 
 ## Features
 
-* React 0.13
-* React Router 0.13
+* React 0.14
+* React Router 0.14
 * Redux 3.0 (Predictable state container)
-* Node 4.1 Compatible
-* Babel 5.8 for ES6 support
+* Redux Devtools for Chrome Extension supported
+* Node 5 Compatible
+* Babel 6 for ES6 support
 * Browser Live Reload based on react-transform-hmr, it build codes pretty fast!
 * CSS / HTML / JS minification / Image optimization when built
 * JS code duplication removal during built

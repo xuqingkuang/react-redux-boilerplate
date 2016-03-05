@@ -1,31 +1,25 @@
-import React, { Component } from 'react';
-import TitleStore from '../stores/titles';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux'
+import {getNextTitle} from '../../actions/titles';
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {title: TitleStore.getState({type: '@@redux/INIT'})};
-    this.interval = setInterval((() => {
-      TitleStore.dispatch({
-        type: 'INCREMENT',
-        state: this.state
-      });
-    }), 1000);
+class Home extends Component {
 
-    // Subscribe store events
-    TitleStore.subscribe(() => {
-      this.setState({title: TitleStore.getState()});
-    });
-  };
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.props.getNextTitle(this.props.title);
+    }, 1000);
+  }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-  };
+  }
 
   render() {
+    let {getNextTitle, title} = this.props;
+
     return (
       <section>
-        <h3>Welcome to {this.state.title}.</h3>
+        <h3 onClick={() => getNextTitle(title)}>Welcome to {title}.</h3>
         <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
         <h3>Designer Templates</h3>
         <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
@@ -43,5 +37,19 @@ export default class Home extends Component {
         </p>
       </section>
     )
+  }
+}
+
+Home.propTypes = {
+  getNextTitle: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
+    title: state.titles.title
   };
 }
+
+const mapDispatchToProps = { getNextTitle }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

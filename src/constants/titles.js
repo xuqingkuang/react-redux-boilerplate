@@ -1,0 +1,1 @@
+export const GET_NEXT_TITLE = 'GET_NEXT_TITLE'
