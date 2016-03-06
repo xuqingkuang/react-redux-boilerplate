@@ -1,6 +1,6 @@
 /* React */
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 /* Redux */
@@ -57,5 +57,5 @@ const routes = (
   </Provider>
 );
 
-/* Initial the app */
+/* Start the app */
 ReactDOM.render(routes, document.getElementById('site'));

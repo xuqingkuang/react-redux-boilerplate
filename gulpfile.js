@@ -1,27 +1,27 @@
 // gulp modules
-const gulp                    = require('gulp')
-const gulpMinifyHTML          = require('gulp-minify-html')
+const gulp                    = require('gulp');
+const gulpMinifyHTML          = require('gulp-htmlmin');
 
 // webpack modules
-const webpack                 = require('webpack')
-const webpackDevMiddleware    = require('webpack-dev-middleware')
-const webpackHotMiddleware    = require('webpack-hot-middleware')
-const webpackConfig           = require('./webpack-config')
-const webpackProductionConfig = require('./webpack-production-config')
+const webpack                 = require('webpack');
+const webpackDevMiddleware    = require('webpack-dev-middleware');
+const webpackHotMiddleware    = require('webpack-hot-middleware');
+const webpackConfig           = require('./webpack-config');
+const webpackProductionConfig = require('./webpack-production-config');
 
 // Others
-const path                    = require('path')
-const express                 = require('express')
-const del                     = require('del')
+const path                    = require('path');
+const express                 = require('express');
+const del                     = require('del');
 
-const devCompiler             = webpack(webpackConfig)
+const devCompiler             = webpack(webpackConfig);
 
 const config = {
   port: 8000,
   host: '0.0.0.0',
+  staticDir: './assets',
   minifyHTML: {
-    comments: true,
-    spare: true
+    collapseWhitespace: true
   }
 }
 
@@ -29,7 +29,7 @@ const config = {
  * Development tasks
  */
 
-gulp.task("dev-server", () => {
+gulp.task('dev-server', () => {
   app = express();
   app.use(webpackDevMiddleware(devCompiler, {
     noInfo: true,
@@ -37,7 +37,7 @@ gulp.task("dev-server", () => {
   }));
   app.use(webpackHotMiddleware(devCompiler));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(path.join(__dirname, 'assets/index.html')))
+    res.sendFile(path.join(__dirname, `${config.staticDir}/index.html`));
   });
   app.listen(config.port, config.host, (err) => {
     if (err) {
@@ -48,7 +48,7 @@ gulp.task("dev-server", () => {
 
   /* Handle Ctrl + C pressed in Docker */
   process.on('SIGINT', () => {
-    console.log("Exiting...");
+    console.log('Exiting...');
     process.exit();
   });
 });
@@ -58,18 +58,18 @@ gulp.task("dev-server", () => {
  */
 
 gulp.task('minify', () => {
-  gulp.src('assets/**/*.html')
+  gulp.src(`${config.staticDir}/**/*.html`)
     .pipe(gulpMinifyHTML(config.minifyHTML))
-    .pipe(gulp.dest(webpackConfig.output.path));
+    .pipe(gulp.dest(webpackConfig.output.path))
 });
 
-gulp.task("build", (callback) => {
+gulp.task('build', (done) => {
   webpack(webpackProductionConfig, (err, stats) => {
     if (err) {
       throw(`webpack:build - ${err}`);
     }
-    console.log("[webpack:build]", stats.toString({colors: true}));
-    callback();
+    console.log('[webpack:build]', stats.toString({colors: true}));
+    done();
   });
 });
 
@@ -78,10 +78,11 @@ gulp.task("build", (callback) => {
  */
 
 gulp.task('copy-assets', () => {
-  gulp.src(['assets/**']).pipe(gulp.dest(webpackConfig.output.path))
+  gulp.src(`${config.staticDir}/**`)
+    .pipe(gulp.dest(webpackConfig.output.path))
 });
 gulp.task('clean', (done) => {
-  del(["#{webpackConfig.output.path}/*"], done);
+  del([`${webpackConfig.output.path}/*`], done);
 });
 gulp.task('default', ['dev-server']);
-gulp.task('production', [ 'copy-assets', 'build', 'minify']);
+gulp.task('production', ['copy-assets', 'build'], () => { gulp.run('minify'); });
