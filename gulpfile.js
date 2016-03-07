@@ -12,6 +12,7 @@ const webpackProductionConfig = require('./webpack-production-config');
 // Others
 const path                    = require('path');
 const express                 = require('express');
+const jest                    = require('jest-cli');
 const del                     = require('del');
 
 const devCompiler             = webpack(webpackConfig);
@@ -22,6 +23,11 @@ const config = {
   staticDir: './assets',
   minifyHTML: {
     collapseWhitespace: true
+  },
+  test: {
+    rootDir: 'src',
+    collectCoverage: true,
+    unmockedModulePathPatterns: ['./node_modules/react']
   }
 }
 
@@ -51,6 +57,10 @@ gulp.task('dev-server', () => {
     console.log('Exiting...');
     process.exit();
   });
+});
+
+gulp.task('test', function (done) {
+  jest.runCLI({ config : config.test }, ".", () => { done(); });
 });
 
 /*

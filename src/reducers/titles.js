@@ -1,11 +1,4 @@
-import { GET_NEXT_TITLE } from '../constants/titles'
-
-const titles = [
-  'React Redux Boilerplate',
-  'React',
-  'Redux',
-  'Boilerplate'
-];
+import { titles, GET_NEXT_TITLE } from '../constants/titles'
 
 const initialState = {
   title: titles[0]

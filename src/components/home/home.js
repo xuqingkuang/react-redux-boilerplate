@@ -6,7 +6,8 @@ class Home extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.props.getNextTitle(this.props.title);
+      let {getNextTitle, title} = this.props;
+      getNextTitle(title);
     }, 1000);
   }
 
@@ -18,7 +19,7 @@ class Home extends Component {
     let {getNextTitle, title} = this.props;
 
     return (
-      <section>
+      <div>
         <h3 onClick={() => getNextTitle(title)}>Welcome to {title}.</h3>
         <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
         <h3>Designer Templates</h3>
@@ -35,7 +36,7 @@ class Home extends Component {
           <a href="https://github.com/contact">contact support</a>
           and we’ll help you sort it out.
         </p>
-      </section>
+      </div>
     )
   }
 }

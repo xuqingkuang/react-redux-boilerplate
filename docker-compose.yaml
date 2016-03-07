@@ -1,0 +1,10 @@
+version: "2"                                   # Docker Compose version
+services:                                      # Services
+  web:                                         # Web app
+    image: xuqingkuang/node:latest             # Container Image
+    ports:                                     # Port mapping
+      - "80:8000"
+    volumes:                                   # Volume mapping
+      - .:/project
+    working_dir: /project                      # Change working dir
+    command: gulp                              # Run command after startup
