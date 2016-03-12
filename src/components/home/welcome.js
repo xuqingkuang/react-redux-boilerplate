@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import {getNextTitle} from '../../actions/titles';
 
-class Home extends Component {
+// Welcome component
+// Export the class for testing
+export class Welcome extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
@@ -22,16 +24,20 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
+// Defined the props type required
+Welcome.propTypes = {
   getNextTitle: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
+// State to props for connect argument
+export const mapStateToProps = (state) => {
   return {
     title: state.titles.title
   };
 }
 
+// Dispatch to props for connect argument
 const mapDispatchToProps = { getNextTitle }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// Conect the component with Redux
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
