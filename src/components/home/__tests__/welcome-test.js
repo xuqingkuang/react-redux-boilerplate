@@ -29,6 +29,14 @@ describe('components', () => {
       const {output} = setup();
       expect(output.type).toBe('h3');
     });
+    it('interval should create/destroy after component mounted/umounted', () => {
+      const {props} = setup();
+      const component = TestUtils.renderIntoDocument(<Welcome {...props} />);
+      expect(component.interval).toBe(1);
+      jest.runOnlyPendingTimers();
+      component.componentWillUnmount()
+      expect(component.interval).toBe(1);
+    });
     it('title clicked should update text content', () => {
       // TODO: Need to test componentDidMount and componentWillUnmount
       const {output} = setup();
