@@ -1,5 +1,5 @@
-const path              = require('path')
-const webpack           = require('webpack')
+const path              = require('path');
+const webpack           = require('webpack');
 
 module.exports = {
   entry: [
@@ -9,12 +9,9 @@ module.exports = {
   devtool: "eval",
   debug: true,
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.resolve('./public'),
     publicPath: '/',
     filename: 'bundle.js'
-  },
-  resolveLoader: {
-    modulesDirectories: ['node_modules']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

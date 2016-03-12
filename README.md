@@ -125,3 +125,14 @@ The all files in `public` folder will be removed.
     |-- gulpfile.js                   - Gulp task defination
     |-- webpack-config.js             - Development build configuration
     `-- webpack-production-config.js  - Production build configuration
+
+## Known Issues
+
+### All of codes are 'import' by relative path.
+
+Becuase of [Jest is not playing well with webpack](http://stackoverflow.com/questions/31547587/testing-webpack-built-react-components-with-jest),
+and the Jestpack solution is not good enough for me, so I decide to use
+relative path to import codes so far.
+
+A branch named `feature/absolute-require-path` is created for solving the issue,
+but the branch can't pass unit testing, I'm still thinking in better solution.
