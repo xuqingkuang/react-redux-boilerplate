@@ -36,7 +36,7 @@ const config = {
  */
 
 gulp.task('dev-server', () => {
-  app = express();
+  const app = express();
   app.use(webpackDevMiddleware(devCompiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath
