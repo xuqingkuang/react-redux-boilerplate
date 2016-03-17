@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/xuqingkuang/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/xuqingkuang/react-redux-boilerplate)
 [![codecov.io](https://codecov.io/github/xuqingkuang/react-redux-boilerplate/coverage.svg?branch=master)](https://codecov.io/github/xuqingkuang/react-redux-boilerplate?branch=master)
+[![Dependency Status](https://david-dm.org/xuqingkuang/react-redux-boilerplate.svg)](https://david-dm.org/xuqingkuang/react-redux-boilerplate)
+[![devDependency Status](https://david-dm.org/xuqingkuang/react-redux-boilerplate/dev-status.svg)](https://david-dm.org/xuqingkuang/react-redux-boilerplate#info=devDependencies)
 
 Another template that makes React and redux web app developmet easier.
 
@@ -15,7 +17,7 @@ Another template that makes React and redux web app developmet easier.
 * React Router 0.14
 * Redux 3.0 (Predictable state container)
 * Redux Devtools for Chrome Extension supported
-* Node 5 Compatible, version 4 is minimal required for compile.
+* Node 5 Compatible, version 4 is minimal required for compile
 * Babel 6 for ES6 support
 * Jest (Unit testing framework)
 * Browser Live Reload based on react-transform-hmr, it build codes pretty fast!
@@ -95,8 +97,11 @@ The all files in `public` folder will be removed.
 
     react-redux-boilerplate           - Project root
     |-- assets                        - Static resources
-    |   |-- imgs - Images             - Sample Images
+    |   |-- imgs                      - Static Images
     |   `-- index.html                - Entrance html
+    |-- coverage                      - Testing coverage report generated
+    |   `-- icov-report
+    |       `-- index.html            - Graphic testing coverage report
     |-- src                           - Source codes
     |   |-- app.js                    - Entrance Javascript
     |   |-- actions                   - Redux Actions
@@ -111,6 +116,9 @@ The all files in `public` folder will be removed.
     |   |   |-- index.js
     |   |   |-- layout.js
     |   |   `-- not-found.js
+    |   |-- config                    - Runtime config
+    |   |   |-- index.js              - Default config
+    |   |   `-- production.js         - Production config
     |   |-- constants                 - Redux Constants
     |   |   `-- titles.js
     |   `-- reducers                  - Redux Reducers
@@ -139,3 +147,6 @@ relative path to import codes so far.
 
 A branch named `feature/absolute-require-path` is created for solving the issue,
 but the branch can't pass unit testing, I'm still thinking in better solution.
+
+And it seems break the hot module.
+ss
