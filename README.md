@@ -1,5 +1,8 @@
 # React Redux Boilerplate
 
+[![Build Status](https://travis-ci.org/xuqingkuang/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/xuqingkuang/react-redux-boilerplate)
+[![codecov.io](https://codecov.io/github/xuqingkuang/react-redux-boilerplate/coverage.svg?branch=master)](https://codecov.io/github/xuqingkuang/react-redux-boilerplate?branch=master)
+
 Another template that makes React and redux web app developmet easier.
 
 ## Demo
@@ -12,7 +15,7 @@ Another template that makes React and redux web app developmet easier.
 * React Router 0.14
 * Redux 3.0 (Predictable state container)
 * Redux Devtools for Chrome Extension supported
-* Node 5 Compatible
+* Node 5 Compatible, version 4 is minimal required for compile.
 * Babel 6 for ES6 support
 * Jest (Unit testing framework)
 * Browser Live Reload based on react-transform-hmr, it build codes pretty fast!
@@ -28,7 +31,7 @@ Feel free to contribute or fork it if you find this repo could help the communit
 
 ### Requirements
 
-* Node 5.0 is required for better experiences, previous versions maybe compatible but not tested yet.
+* Node 4.0 is required at least for ES6 compile support.
 * Gulp must be installed globally with `$ npm install -g gulp`
 
 ### Start
