@@ -13,3 +13,5 @@ branches:
     - master
 before_script:
   - npm install -g gulp
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov/bin/codecov
