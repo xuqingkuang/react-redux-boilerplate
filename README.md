@@ -13,9 +13,9 @@ Another template that makes React and redux web app developmet easier.
 
 ## Features
 
-* React 0.14
-* React Router 0.14
-* Redux 3.0 (Predictable state container)
+* React 15
+* React Router 2.2
+* Redux 3.4 (Predictable state container)
 * Redux Devtools for Chrome Extension supported
 * Node 5 Compatible, version 4 is minimal required for compile
 * Babel 6 for ES6 support
@@ -149,4 +149,3 @@ A branch named `feature/absolute-require-path` is created for solving the issue,
 but the branch can't pass unit testing, I'm still thinking in better solution.
 
 And it seems break the hot module.
-ss
