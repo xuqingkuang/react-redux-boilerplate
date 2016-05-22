@@ -8,12 +8,12 @@ jest.unmock('../../constants/titles');
 
 describe('titles actions', () => {
   it('Should return correct title for defined title', () => {
-    for (let i = 0; i < constants.titles.length; i++) {
+    for (let i = 0; i < constants.TITLES.size; i++) {
       expect(
-        actions.getNextTitle(constants.titles[i])
+        actions.getNextTitle(constants.TITLES.get(i))
       ).toEqual({
         type: constants.GET_NEXT_TITLE,
-        title: constants.titles[i]
+        title: constants.TITLES.get(i)
       });
     }
   });
