@@ -23,7 +23,7 @@ Another template that makes React and redux web app developmet easier.
 * Browser Live Reload based on react-transform-hmr, it build codes pretty fast!
 * CSS / HTML / JS minification / Image optimization when built
 * JS code duplication removal during built
-* Code is minimized and pure write with Coffee and cjsx for better extension, focused on core features only.
+* Code is minimized and focused on core features only.
 
 If you are interested, please read the `package.json` file for all installed modules.
 
