@@ -15,6 +15,9 @@ module.exports = Object.assign({}, config, {
     new webpack.IgnorePlugin(/vertx/),
     new webpack.IgnorePlugin(/un~$/),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    })
   ]
 })
