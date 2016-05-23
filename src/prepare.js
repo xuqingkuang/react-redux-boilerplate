@@ -1,3 +1,6 @@
+/* Babel Polyfill */
+import babelPolyfill from 'babel-polyfill';
+
 /* Redux */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
