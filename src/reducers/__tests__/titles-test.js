@@ -3,8 +3,7 @@ import reducer from '../titles';
 /* Import constants */
 import * as constants from '../../constants/titles';
 
-jest.unmock( '../titles');
-jest.unmock('../../constants/titles');
+jest.disableAutomock()
 
 describe('titles reducer', () => {
   it('should return the initial state', () => {

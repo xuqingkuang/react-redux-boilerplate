@@ -3,8 +3,7 @@ import * as actions from '../titles';
 /* Import constants */
 import * as constants from '../../constants/titles';
 
-jest.unmock('../titles');
-jest.unmock('../../constants/titles');
+jest.disableAutomock()
 
 describe('titles actions', () => {
   it('Should return correct title for defined title', () => {
