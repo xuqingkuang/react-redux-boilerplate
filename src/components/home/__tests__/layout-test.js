@@ -1,7 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Layout from '../layout';
-import {Welcome} from '../welcome';
 
 jest.unmock('../layout');
 jest.unmock('../welcome');

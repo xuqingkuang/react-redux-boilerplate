@@ -11,7 +11,8 @@
     "window": true,
     "process": true,
     "module": true,
-    "setInterval": true
+    "setInterval": true,
+    "clearInterval"
   },
   "plugins": [
     "react"

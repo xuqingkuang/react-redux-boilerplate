@@ -1,5 +1,5 @@
 /* Babel Polyfill */
-import babelPolyfill from 'babel-polyfill';
+require('babel-polyfill');
 
 /* Redux */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';

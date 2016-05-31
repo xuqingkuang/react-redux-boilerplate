@@ -12,8 +12,8 @@ export default function getNextTitle(state = initialState, action) {
     }
     if (nextIndex === TITLES.size) {
       nextIndex = 0;
-    };
+    }
     return { title: TITLES.get(nextIndex) }
   }
   return state
-};
+}
