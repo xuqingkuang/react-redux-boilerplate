@@ -57,7 +57,7 @@
     "react-addons-test-utils": "^15.1.0",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
-    "redbox-react": "^1.2.5",
+    "redbox-react": "^1.2.6",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
