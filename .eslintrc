@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+   "jest": true
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "process": true,
+    "module": true,
+    "setInterval": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ]
+}

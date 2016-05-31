@@ -1,6 +1,7 @@
 // gulp modules
 const gulp                    = require('gulp');
 const gulpMinifyHTML          = require('gulp-htmlmin');
+const eslint                  = require('gulp-eslint');
 
 // webpack modules
 const webpack                 = require('webpack');
@@ -61,6 +62,13 @@ gulp.task('dev-server', () => {
 
 gulp.task('test', function (done) {
   jest.runCLI({ config : config.test }, ".", () => { done(); });
+});
+
+gulp.task('lint', function () {
+  return gulp.src(['src/**/*.js', '!**/__tests__/'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 /*
