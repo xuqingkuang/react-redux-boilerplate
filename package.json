@@ -25,6 +25,7 @@
     "immutable": "^3.8.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-hot-loader": "^3.0.0-beta.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.4",
@@ -46,7 +47,6 @@
     "eslint": "^2.11.1",
     "eslint-plugin-react": "^5.1.1",
     "exports-loader": "^0.6.3",
-    "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
@@ -55,11 +55,8 @@
     "jest": "^12.1.1",
     "jest-cli": "^12.1.0",
     "react-addons-test-utils": "^15.1.0",
-    "react-transform-catch-errors": "^1.0.2",
-    "react-transform-hmr": "^1.0.4",
-    "redbox-react": "^1.2.6",
     "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-error-notification": "^0.1.6"
   }
 }

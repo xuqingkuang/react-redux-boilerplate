@@ -5,8 +5,7 @@ const eslint                  = require('gulp-eslint');
 
 // webpack modules
 const webpack                 = require('webpack');
-const webpackDevMiddleware    = require('webpack-dev-middleware');
-const webpackHotMiddleware    = require('webpack-hot-middleware');
+const WebpackDevServer        = require('webpack-dev-server')
 const webpackConfig           = require('./webpack-config');
 const webpackProductionConfig = require('./webpack-production-config');
 
@@ -37,16 +36,19 @@ const config = {
  */
 
 gulp.task('dev-server', () => {
-  const app = express();
-  app.use(webpackDevMiddleware(devCompiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath
-  }));
-  app.use(webpackHotMiddleware(devCompiler));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, `${config.staticDir}/index.html`));
-  });
-  app.listen(config.port, config.host, (err) => {
+  new WebpackDevServer(devCompiler, {
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
+    historyApiFallback: {
+      index: './assets/index.html'
+    },
+    staticOptions: {
+      index: path.resolve('./assets/index.html')
+    },
+    stats: {
+      colors: true
+    }
+  }).listen(config.port, config.host, (err) => {
     if (err) {
       return console.error(err);
     }
