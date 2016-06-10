@@ -40,10 +40,7 @@ gulp.task('dev-server', () => {
     publicPath: webpackConfig.output.publicPath,
     hot: true,
     historyApiFallback: {
-      index: './assets/index.html'
-    },
-    staticOptions: {
-      index: path.resolve('./assets/index.html')
+      index: `${config.staticDir}/index.html`
     },
     stats: {
       colors: true

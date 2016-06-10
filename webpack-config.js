@@ -3,9 +3,9 @@ const webpack           = require('webpack');
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://0.0.0.0:8000',
     'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
     './src/app'
   ],
   devtool: "eval",
