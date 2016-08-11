@@ -14,13 +14,13 @@ Another template that makes React and redux web app developmet easier.
 ## Features
 
 * React 15
-* React Router 2.2
-* Redux 3.4 (Predictable state container)
+* React Router 2.6
+* Redux 3.5 (Predictable state container)
 * Redux Devtools for Chrome Extension supported
 * Node 5 Compatible, version 4 is minimal required for compile
 * Babel 6 for ES6 support
 * Jest (Unit testing framework)
-* Browser Live Reload based on react-transform-hmr, it build codes pretty fast!
+* Browser Live Reload based on latest version of webpack-dev-server and react-hot-loader, it build codes pretty fast!
 * CSS / HTML / JS minification / Image optimization when built
 * JS code duplication removal during built
 * Code is minimized and focused on core features only.
