@@ -10,7 +10,7 @@ function setup() {
 
   const renderer = TestUtils.createRenderer();
   renderer.render(<Layout {...props} />);
-  let output = renderer.getRenderOutput();
+  const output = renderer.getRenderOutput();
 
   return {
     props,

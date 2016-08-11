@@ -6,13 +6,13 @@ import {getNextTitle} from '../../../actions/titles';
 jest.unmock('../welcome');
 
 function setup() {
-  let props = {
+  const props = {
     getNextTitle: getNextTitle
   };
 
   const renderer = TestUtils.createRenderer();
   renderer.render(<Welcome {...props} />);
-  let output = renderer.getRenderOutput();
+  const output = renderer.getRenderOutput();
   jest.clearAllTimers()
 
   return {

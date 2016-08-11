@@ -14,8 +14,8 @@ describe('titles reducer', () => {
     })
   });
 
-  it('Should return correct next title', () => {
-    for (let i = 0; i < constants.TITLES.size - 1; i++) {
+  it('Should return correct title', () => {
+    for (let i = 0; i < constants.TITLES.size; i++) {
       const action = {
         type: constants.GET_NEXT_TITLE,
         title: constants.TITLES.get(i)
@@ -23,20 +23,8 @@ describe('titles reducer', () => {
       expect(
         reducer(undefined, action)
       ).toEqual({
-        title: constants.TITLES.get(i + 1)
+        title: constants.TITLES.get(i)
       });
     }
-  });
-
-  it('Should return the first title when pass last title into reducer', () => {
-    const action = {
-      type: constants.GET_NEXT_TITLE,
-      title: constants.TITLES.get(constants.TITLES.size - 1)
-    }
-    expect(
-      reducer(undefined, action)
-    ).toEqual({
-      title: constants.TITLES.get(0)
-    });
   });
 })

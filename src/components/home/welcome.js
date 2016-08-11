@@ -6,9 +6,15 @@ import {getNextTitle} from '../../actions/titles';
 // Export the class for testing
 export class Welcome extends Component {
 
+  // Defined the props type required
+  static propTypes = {
+    title: PropTypes.string,
+    getNextTitle: PropTypes.func.isRequired
+  }
+
   componentDidMount() {
     this.interval = setInterval(() => {
-      let {getNextTitle, title} = this.props;
+      const {getNextTitle, title} = this.props;
       getNextTitle(title);
     }, 1000);
   }
@@ -18,15 +24,9 @@ export class Welcome extends Component {
   }
 
   render() {
-    let {getNextTitle, title} = this.props;
-
+    const {getNextTitle, title} = this.props;
     return (<h3 onClick={() => getNextTitle(title)}>Welcome to {title}.</h3>);
   }
-}
-
-// Defined the props type required
-Welcome.propTypes = {
-  getNextTitle: PropTypes.func.isRequired
 }
 
 // State to props for connect argument

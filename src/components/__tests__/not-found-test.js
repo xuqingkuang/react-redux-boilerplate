@@ -5,11 +5,11 @@ import NotFound from '../not-found';
 jest.unmock('../not-found');
 
 function setup() {
-  let props = {};
+  const props = {};
 
   const renderer = TestUtils.createRenderer();
   renderer.render(<NotFound {...props} />);
-  let output = renderer.getRenderOutput();
+  const output = renderer.getRenderOutput();
 
   return {
     props,

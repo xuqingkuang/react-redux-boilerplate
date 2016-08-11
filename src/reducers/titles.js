@@ -5,15 +5,12 @@ const initialState = {
 }
 
 export default function getNextTitle(state = initialState, action) {
-  if (action.type === GET_NEXT_TITLE) {
-    let nextIndex = 0;
-    if (action.title) {
-      nextIndex = TITLES.indexOf(action.title) + 1;
-    }
-    if (nextIndex === TITLES.size) {
-      nextIndex = 0;
-    }
-    return { title: TITLES.get(nextIndex) }
+  switch(action.type) {
+    case GET_NEXT_TITLE:
+      return {
+        title: action.title
+      }
+    default:
+      return state
   }
-  return state
 }

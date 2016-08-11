@@ -5,11 +5,15 @@ import Layout from '../layout';
 jest.unmock('../layout');
 
 function setup() {
-  let props = {};
+  const props = {
+    children: (
+      <div></div>
+    )
+  };
 
   const renderer = TestUtils.createRenderer();
   renderer.render(<Layout {...props} />);
-  let output = renderer.getRenderOutput();
+  const output = renderer.getRenderOutput();
 
   return {
     props,

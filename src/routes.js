@@ -16,7 +16,7 @@ import {Layout, NotFound} from './components';
 import {Home} from './components/home';
 
 /* Routes */
-export default () => {
+const Routers = () => {
   return (
     <Provider store={store}>
       <Router history={history}>
@@ -28,3 +28,5 @@ export default () => {
     </Provider>
   )
 };
+
+export default Routers;

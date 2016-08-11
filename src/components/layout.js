@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const styles = {
   container: {
@@ -29,7 +29,7 @@ const styles = {
 }
 
 
-export default ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -49,4 +49,10 @@ export default ({ children }) => {
       </footer>
     </div>
   )
+};
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
 }
+
+export default Layout;

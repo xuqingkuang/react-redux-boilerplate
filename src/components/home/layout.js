@@ -1,7 +1,7 @@
 import React from 'react';
 import Welcome from './welcome';
 
-export default () => {
+const HomeLayout = () => {
   return (
     <div>
       <Welcome />
@@ -22,4 +22,6 @@ export default () => {
       </p>
     </div>
   );
-}
+};
+
+export default HomeLayout;
