@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "noEmitOnError": true
+  },
+  "exclude": [
+    "node_modules",
+    "public"
+  ]
+}

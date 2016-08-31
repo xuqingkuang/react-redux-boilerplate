@@ -1,7 +1,8 @@
-import React from 'react';
-import Welcome from './welcome';
+import * as React from 'react';
+import { StatelessComponent } from 'react';
+import * as Welcome from './welcome';
 
-const HomeLayout = () => {
+const HomeLayout: StatelessComponent<any> = (Welcome: typeof React.Component): any => {
   return (
     <div>
       <Welcome />

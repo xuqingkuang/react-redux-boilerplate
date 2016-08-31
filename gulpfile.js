@@ -1,7 +1,7 @@
 // gulp modules
 const gulp                    = require('gulp');
 const gulpMinifyHTML          = require('gulp-htmlmin');
-const eslint                  = require('gulp-eslint');
+const tslint                  = require('gulp-tslint');
 
 // webpack modules
 const webpack                 = require('webpack');
@@ -60,14 +60,13 @@ gulp.task('dev-server', () => {
 });
 
 gulp.task('test', function (done) {
-  jest.runCLI({ config : config.test }, ".", () => { done(); });
+  jest.runCLI({ config: config.test }, ".", () => { done(); });
 });
 
 gulp.task('lint', function () {
-  return gulp.src(['src/**/*.js', '!**/__tests__/'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+  gulp.src(['src/**/*.ts', 'src/**/*.tsx'])
+    .pipe(tslint({ formatter: "verbose"}))
+    .pipe(tslint.report());
 });
 
 /*

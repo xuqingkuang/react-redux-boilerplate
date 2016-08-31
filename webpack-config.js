@@ -1,5 +1,6 @@
 const path              = require('path');
 const webpack           = require('webpack');
+const failPlugin        = require('webpack-fail-plugin');
 
 module.exports = {
   entry: [
@@ -19,10 +20,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    })
+    }),
+    failPlugin
   ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.ts', '.tsx']
   },
   module: {
     loaders: [
@@ -32,16 +34,25 @@ module.exports = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-        loader: "file"
+        loader: 'file'
       },
       {
-        test: /\.js$/, loader: 'babel',
-        exclude: /node_modules/,
-        include: __dirname
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts',
+        exclude: /node_modules/
       },
       {
         test: /\.css?$/,
-        loader: 'style!css?sourceMap&modules&localIdentName=[path][name]---[local]---[hash:base64:5]'
+        loaders: [
+          'style',
+          'css?sourceMap',
+          'postcss'
+        ]
       }
     ]
   }

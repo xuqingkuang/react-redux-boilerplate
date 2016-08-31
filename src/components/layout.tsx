@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import * as React from 'react';
+import { StatelessComponent } from 'react';
 
 const styles = {
   container: {
@@ -26,10 +27,13 @@ const styles = {
     fontWeight      : '400',
     textDecoration  : 'none'
   }
+};
+
+interface ILayout {
+  children: any
 }
 
-
-const Layout = ({ children }) => {
+const Layout: StatelessComponent<ILayout> = ({ children }) => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -42,17 +46,13 @@ const Layout = ({ children }) => {
         </p>
       </header>
       <section style={styles.content}>
-        {children}
+        { children }
       </section>
       <footer style={styles.footer}>
         <p><small>Hosted on GitHub Pages — Theme by <a href="https://github.com/orderedlist">orderedlist</a> and refined by <a href="http://kuang.it">XQ Kuang</a></small></p>
       </footer>
     </div>
-  )
+  );
 };
-
-Layout.propTypes = {
-  children: PropTypes.element.isRequired
-}
 
 export default Layout;
