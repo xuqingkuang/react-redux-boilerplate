@@ -84,14 +84,14 @@ Will call [Jest](http://facebook.github.io/jest) to execute the unit testing.
 
     $ gulp production
 
-The codes will be compiled and placed to `public` folder, all of them are
+The codes will be compiled and placed to `dist` folder, all of them are
 minimized.
 
 ###  Clean the built folder
 
     $ gulp clean
 
-The all files in `public` folder will be removed.
+The all files in `dist` folder will be removed.
 
 ## Structure
 
@@ -124,7 +124,7 @@ The all files in `public` folder will be removed.
     |   `-- reducers                  - Redux Reducers
     |       |-- index.js
     |       `-- titles.js
-    |-- public                        - Built app for production
+    |-- dist                        - Built app for production
     |   |-- bundle.js                 - Built Javascript
     |   |-- bundle.js.map             - Source map for Built Javascript
     |   |-- imgs                      - Static images

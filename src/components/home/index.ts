@@ -1,3 +1,3 @@
-import * as Home from './layout';
+import Home from './layout';
 
 export { Home };

@@ -2,16 +2,20 @@
   "compileOnSave": false,
   "buildOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "outDir": "./dist/",
+    "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
-    "sourceMap": false,
-    "noImplicitAny": false,
+    "sourceMap": true,
+    "noImplicitAny": true,
     "noEmitOnError": true
   },
+  "files": [
+    "./src/app.tsx"
+  ],
   "exclude": [
     "node_modules",
-    "public"
+    "dist"
   ]
 }

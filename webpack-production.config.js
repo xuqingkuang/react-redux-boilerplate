@@ -1,5 +1,5 @@
 const webpack           = require('webpack');
-const config            = require('./webpack-config');
+const config            = require('./webpack.config');
 
 module.exports = Object.assign({}, config, {
   entry: [
@@ -12,10 +12,11 @@ module.exports = Object.assign({}, config, {
         NODE_ENV: JSON.stringify("production")
       }
     }),
-    new webpack.IgnorePlugin(/vertx/),
-    new webpack.IgnorePlugin(/un~$/),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })

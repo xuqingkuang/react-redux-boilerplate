@@ -1,5 +1,5 @@
-import * as Layout from './layout';
-import * as NotFound from './not-found';
+import Layout from './layout';
+import NotFound from './not-found';
 
 export { Layout };
 export { NotFound };

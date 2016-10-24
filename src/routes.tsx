@@ -10,18 +10,19 @@ import { Router, Route, IndexRoute } from 'react-router';
 import { store, history } from './prepare';
 
 /* App configs */
-import * as config from './config';
+import config from './config';
 
 /* Components */
 import { Layout, NotFound } from './components';
 import { Home } from './components/home';
 
 /* Routes */
-const Routers: StatelessComponent<any> = (): any => {
+const { urlPrefix } = config;
+const Routes: StatelessComponent<any> = (): any => {
   return (
     <Provider store={ store }>
       <Router history={ history }>
-        <Route path={ config['urlPrefix'] } component={ Layout }>
+        <Route path={ urlPrefix } component={ Layout }>
           <IndexRoute component={ Home } />
         </Route>
         <Route path="*" component={ NotFound } />
@@ -30,4 +31,4 @@ const Routers: StatelessComponent<any> = (): any => {
   );
 };
 
-export default Routers;
+export default Routes;

@@ -5,29 +5,28 @@ import { connect } from 'react-redux';
 import { getNextTitle } from '../../actions/titles';
 
 // Welcome component
-// Export the class for testing
-
 interface IProps {
   getNextTitle?: any;
   title?: string;
 };
 
+// Export the class for testing
 export class Welcome extends Component<IProps, any> {
 
   private interval: any;
 
-  componentDidMount () {
+  private componentDidMount () {
     this.interval = setInterval(() => {
       const { getNextTitle, title } = this.props;
       getNextTitle(title);
     }, 1000);
   }
 
-  componentWillUnmount () {
+  private componentWillUnmount () {
     clearInterval(this.interval);
   }
 
-  render () {
+  public render () {
     const { getNextTitle, title } = this.props;
     return (
       <h3 onClick={ () => getNextTitle(title) }>
@@ -41,16 +40,19 @@ export class Welcome extends Component<IProps, any> {
 // State to props for connect argument
 export const mapStateToProps = (state: any): IProps => {
   return {
-    title: state.titles.title
+    title: state.titleReducer.title,
   };
 };
 
 // Dispatch to props for connect argument
 const mapDispatchToProps = (dispatch: Dispatch<any>): IProps => {
   return {
-    getNextTitle: bindActionCreators(getNextTitle, dispatch)
+    getNextTitle: bindActionCreators(getNextTitle, dispatch),
   };
-}
+};
+
 // Conect the component with Redux
-const ConnectedComponent = connect<IProps, any, any>(mapStateToProps, mapDispatchToProps)(Welcome);
-export default <ConnectedComponent />;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Welcome);

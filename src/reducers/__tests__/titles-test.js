@@ -1,7 +1,7 @@
 /* Import redcers */
 import reducer from '../titles';
 /* Import constants */
-import * as constants from '../../constants/titles';
+import * as constants from '../../constants';
 
 jest.disableAutomock()
 

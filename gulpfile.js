@@ -6,8 +6,8 @@ const tslint                  = require('gulp-tslint');
 // webpack modules
 const webpack                 = require('webpack');
 const WebpackDevServer        = require('webpack-dev-server')
-const webpackConfig           = require('./webpack-config');
-const webpackProductionConfig = require('./webpack-production-config');
+const webpackConfig           = require('./webpack.config');
+const webpackProductionConfig = require('./webpack-production.config');
 
 // Others
 const path                    = require('path');

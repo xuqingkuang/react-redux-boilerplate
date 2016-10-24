@@ -1,8 +1,8 @@
-export const TITLES =[
+export const TITLES = [
   'React Redux Boilerplate',
   'React',
   'Redux',
-  'Boilerplate'
-]
+  'Boilerplate',
+];
 
 export const GET_NEXT_TITLE = 'GET_NEXT_TITLE';

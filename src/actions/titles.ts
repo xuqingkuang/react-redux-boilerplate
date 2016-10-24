@@ -10,6 +10,6 @@ export const getNextTitle = (title: string) => {
   }
   return {
     type: GET_NEXT_TITLE,
-    title: TITLES[nextIndex]
+    title: TITLES[nextIndex],
   };
 };
