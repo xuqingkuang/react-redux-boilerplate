@@ -1,29 +1,27 @@
 /* Import redcers */
-import reducer from '../titles';
+import { titleReducer } from '../titles';
 /* Import constants */
 import * as constants from '../../constants';
-
-jest.disableAutomock()
 
 describe('titles reducer', () => {
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {})
+      titleReducer(undefined, {})
     ).toEqual({
-      title: constants.TITLES.get(0)
+      title: constants.TITLES[0]
     })
   });
 
   it('Should return correct title', () => {
-    for (let i = 0; i < constants.TITLES.size; i++) {
+    for (let i = 0; i < constants.TITLES.length; i++) {
       const action = {
         type: constants.GET_NEXT_TITLE,
-        title: constants.TITLES.get(i)
+        title: constants.TITLES[i]
       }
       expect(
-        reducer(undefined, action)
+        titleReducer(undefined, action)
       ).toEqual({
-        title: constants.TITLES.get(i)
+        title: constants.TITLES[i]
       });
     }
   });

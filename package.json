@@ -11,8 +11,7 @@
   "keywords": [
     "react",
     "redux",
-    "es6",
-    "babel",
+    "typescript",
     "boilerplate",
     "gulp",
     "express"
@@ -27,7 +26,27 @@
     "build": "cross-env NODE_ENV=production webpack --display-error-details --config webpack-production.config.js",
     "clean": "rimraf dist",
     "lint": "tslint --force \"src/**/*.ts*\" && sass-lint -v -q src/**/*.scss",
-    "test": "jest"
+    "test": "jest --no-cache"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    }
+  },
+  "engines": {
+    "npm": ">=3.10.0",
+	  "node": ">=6.9.0",
+    "yarn": ">=0.16.0"
   },
   "dependencies": {
     "react": "^15.3.2",
@@ -43,6 +62,7 @@
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "@types/react": "^0.14.41",
+    "@types/react-addons-test-utils": "^0.14.15",
     "@types/react-dom": "^0.14.18",
     "@types/react-redux": "^4.4.32",
     "@types/react-router": "^2.0.38",
@@ -54,9 +74,9 @@
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
     "file-loader": "^0.9.0",
+    "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.6.5",
-    "jest": "^14.1.0",
-    "jest-cli": "^14.1.0",
+    "jest-cli": "^16.0.2",
     "react-addons-test-utils": "^15.3.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
@@ -65,6 +85,7 @@
     "sasslint-webpack-plugin": "^1.0.4",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
+    "ts-jest": "^0.1.9",
     "ts-loader": "^0.9.5",
     "tslint": "^3.15.1",
     "tslint-loader": "^2.1.5",

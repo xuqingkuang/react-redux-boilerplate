@@ -1,10 +1,14 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import * as React from 'react';
+import * as TestUtils from 'react-addons-test-utils';
 import NotFound from '../not-found';
 
-jest.unmock('../not-found');
+interface ISetup {
+  props: any;
+  output: any;
+  renderer: any;
+}
 
-function setup() {
+const setup = (): ISetup => {
   const props = {};
 
   const renderer = TestUtils.createRenderer();
