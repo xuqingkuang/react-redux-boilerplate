@@ -5,7 +5,7 @@ const sassLint          = require('sasslint-webpack-plugin');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://0.0.0.0:8000',
     'webpack/hot/dev-server',
     './src/app'
   ],
@@ -31,6 +31,8 @@ module.exports = {
   devServer: {
     hot: true,
     contentBase: 'assets/',
+    host: '0.0.0.0',
+    port: '8000'
   },
   module: {
     rules: [

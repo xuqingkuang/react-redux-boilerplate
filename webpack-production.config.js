@@ -1,5 +1,7 @@
 const webpack           = require('webpack');
 const config            = require('./webpack.config');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = Object.assign({}, config, {
   entry: [
@@ -12,11 +14,14 @@ module.exports = Object.assign({}, config, {
         NODE_ENV: JSON.stringify("production")
       }
     }),
+    new CopyWebpackPlugin([
+      {
+        context: 'assets',
+        from: '**/*'
+      },
+    ]),
     new webpack.optimize.DedupePlugin(),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })

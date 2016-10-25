@@ -1,11 +1,11 @@
-interface ConfigInterface {
+interface IProductionConfig {
   urlPrefix?: string;
   historyBackend?: string;
 }
 
 /* Config for production enviroment */
 
-const config: ConfigInterface = {
+const config: IProductionConfig = {
   /*
    * 'public' url prefix is use for `gulp production` static files testing,
    * comment these lines because they are not in using so far.
@@ -15,7 +15,7 @@ const config: ConfigInterface = {
 
   // For github demo page, it changed to use hashHitory backend for relative
   // path support.
-  historyBackend: 'hashHistory'
+  historyBackend: 'hashHistory',
 };
 
 export default config;

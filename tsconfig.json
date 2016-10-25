@@ -3,7 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/",
-    "target": "es2015",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",

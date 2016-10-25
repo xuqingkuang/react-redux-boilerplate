@@ -15,6 +15,15 @@ export class Welcome extends Component<IProps, any> {
 
   private interval: any;
 
+  public render () {
+    const { getNextTitle, title } = this.props;
+    return (
+      <h3 onClick={ () => getNextTitle(title) }>
+        Welcome to { title }.
+      </h3>
+    );
+  }
+
   private componentDidMount () {
     this.interval = setInterval(() => {
       const { getNextTitle, title } = this.props;
@@ -24,15 +33,6 @@ export class Welcome extends Component<IProps, any> {
 
   private componentWillUnmount () {
     clearInterval(this.interval);
-  }
-
-  public render () {
-    const { getNextTitle, title } = this.props;
-    return (
-      <h3 onClick={ () => getNextTitle(title) }>
-        Welcome to { title }.
-      </h3>
-    );
   }
 
 }
