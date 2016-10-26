@@ -7,13 +7,15 @@
 
 Another template that makes React and redux web app developmet easier.
 
+> Babel 6 version was stopped maintenance, please look at [v1.0.0](https://github.com/xuqingkuang/react-redux-boilerplate/releases/tag/v1.0.0) if you need.
+
 ## Demo
 
 [Click here for demo](http://xuqingkuang.github.io/react-redux-boilerplate)
 
 ## Features
 
-* TypeScript 2, no babel required
+* TypeScript 2, no Babel required any more
 * Unit testing covered with Jest
 * Different configs for different environment.
 * React 15
