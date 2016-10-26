@@ -13,17 +13,16 @@ Another template that makes React and redux web app developmet easier.
 
 ## Features
 
+* TypeScript 2, no babel required
+* Unit testing covered with Jest
+* Different config for different environment.
 * React 15
-* React Router 2.6
-* Redux 3.5 (Predictable state container)
-* Redux Devtools for Chrome Extension supported
-* Node 5 Compatible, version 4 is minimal required for compile
-* Babel 6 for ES6 support
-* Jest (Unit testing framework)
-* Browser Live Reload based on latest version of webpack-dev-server and react-hot-loader, it build codes pretty fast!
-* CSS / HTML / JS minification / Image optimization when built
-* JS code duplication removal during built
-* Code is minimized and focused on core features only.
+* React Router 2.8
+* Redux 3.6 (Predictable state container)
+* Sass css pre-processor with lint
+* Yarn supported
+* Redux Devtools for Chrome Extension supported(Better than redux-logger)
+* Browser live reload
 
 If you are interested, please read the `package.json` file for all installed modules.
 
@@ -33,63 +32,43 @@ Feel free to contribute or fork it if you find this repo could help the communit
 
 ### Requirements
 
-* Node 4.0 is required at least for ES6 compile support.
-* Gulp must be installed globally with `$ npm install -g gulp`
+* Node 6 LTS for building
 
 ### Start
 
 1. Clone the repo - `$ git clone https://github.com/xuqingkuang/react-redux-boilerplate`
-2. Install the dependencies - `$ cd react-redux-boilerplate && npm install`
+2. Install the dependencies - `$ cd react-redux-boilerplate && yarn`
 
-#### *Start Environment in Docker*
-
-The project supported the node development in Docker, no need to setup node
-environment locally, just install [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
-and then start the `Docker Quickstart Terminal` and then change to the project
-folder. and execute following commands
-
-    # Pull the customized images
-    $ docker pull xuqingkuang/node
-    # Install dependencies
-    $ docker run -v $(pwd):/project -w /project npm install
-    # Start the environment
-    $ docker-compose up
-
-Then navigate to the Docker host(`192.168.99.100` for Windows/Mac by default),
-you will see the project started.
-
-*BUG: The `Browser Live Reload` feature seems broken in Docker container, please
-don't report bugs relate of it.*
-
-## Execution & Gulp Tasks
+## Executions
 
 ### Start develop environment
 
-    $ gulp
+    $ npm start
 
-Run gulp directly without any options will build the codes and start a
-development web server on `http://localhost:8000`, then you can open a browsre to
-access the page, the codes in `src` will be compiled at run time when change
-anything, and the browser will auto reload.
+Run `start` directly without any options will build the codes and start a
+development web server on `http://0.0.0.0:8000`, then you can open a browser to
+access the page with any IP address such as `http://localhost:8000`,
+the codes in `src` will be compiled at run time when change anything, and the
+browser will auto reload.
 
 By the way, the step is running on memory, there's no any files generated.
 
 ### Unit test
 
-    $ gulp test
+    $ npm run test
 
 Will call [Jest](http://facebook.github.io/jest) to execute the unit testing.
 
 ### Build the codes for production
 
-    $ gulp production
+    $ npm run build
 
 The codes will be compiled and placed to `dist` folder, all of them are
 minimized.
 
 ###  Clean the built folder
 
-    $ gulp clean
+    $ npm run clean
 
 The all files in `dist` folder will be removed.
 
@@ -103,49 +82,37 @@ The all files in `dist` folder will be removed.
     |   `-- icov-report
     |       `-- index.html            - Graphic testing coverage report
     |-- src                           - Source codes
-    |   |-- app.js                    - Entrance Javascript
-    |   |-- actions                   - Redux Actions
-    |   |   |-- __tests__
-    |   |   |   `-- titles-test.js
-    |   |   |-- index.js
-    |   |   `-- titles.js
+    |   |-- app.tsx                   - Entrance Javascript
+    |   |-- prepare.ts                - App preparings, init history and store.
+    |   |-- routes.tsx                - Routes config
+    |   |-- constants.ts              - Redux constants
+    |   |-- actions                   - Redux actions
+    |   |   |-- __tests__             - Unit testing folder, following are same
+    |   |   |   `-- titles-test.ts
+    |   |   |-- index.ts
+    |   |   `-- titles.ts
     |   |-- components                - React Components
     |   |   |-- home
-    |   |   |   |-- home.js
-    |   |   |   `-- index.js
-    |   |   |-- index.js
-    |   |   |-- layout.js
-    |   |   `-- not-found.js
+    |   |   |   |-- home.tsx
+    |   |   |   `-- index.tsx
+    |   |   |-- index.ts
+    |   |   |-- layout.tsx
+    |   |   |-- layout.scss           - Sass for layout.tsx
+    |   |   `-- not-found.tsx
     |   |-- config                    - Runtime config
-    |   |   |-- index.js              - Default config
-    |   |   `-- production.js         - Production config
-    |   |-- constants                 - Redux Constants
-    |   |   `-- titles.js
+    |   |   |-- index.ts              - Default config
+    |   |   `-- production.ts         - Production config
     |   `-- reducers                  - Redux Reducers
-    |       |-- index.js
-    |       `-- titles.js
-    |-- dist                        - Built app for production
+    |       |-- index.ts
+    |       `-- titles.ts
+    |-- dist                          - Built app for production
     |   |-- bundle.js                 - Built Javascript
     |   |-- bundle.js.map             - Source map for Built Javascript
     |   |-- imgs                      - Static images
     |   `-- index.html                - Same entrance in 'assets'
+    |-- .travis.yml                   - Travis CI config
     |-- LICENSE                       - Copyright notice
     |-- README.md                     - This file
     |-- package.json                  - Package informations
-    |-- docker-compose.yaml           - Dock Compose configuration
-    |-- gulpfile.js                   - Gulp task defination
-    |-- webpack-config.js             - Development build configuration
-    `-- webpack-production-config.js  - Production build configuration
-
-## Known Issues
-
-### All of codes are 'import' by relative path.
-
-Becuase of [Jest is not playing well with webpack](http://stackoverflow.com/questions/31547587/testing-webpack-built-react-components-with-jest),
-and the Jestpack solution is not good enough for me, so I decide to use
-relative path to import codes so far.
-
-A branch named `feature/absolute-require-path` is created for solving the issue,
-but the branch can't pass unit testing, I'm still thinking in better solution.
-
-And it seems break the hot module.
+    |-- webpack.config.js             - Development build configuration
+    `-- webpack-production.config.js  - Production build configuration

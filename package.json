@@ -1,6 +1,6 @@
 {
   "name": "react-redux-boilerplate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "React Redux Boilerplate",
   "homepage": "https://github.com/xuqingkuang/react-redux-boilerplate",
   "author": {
@@ -32,7 +32,7 @@
     "collectCoverage": true,
     "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test))\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
