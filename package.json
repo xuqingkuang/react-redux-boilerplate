@@ -1,11 +1,11 @@
 {
   "name": "react-redux-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "React Redux Boilerplate",
   "homepage": "https://github.com/xuqingkuang/react-redux-boilerplate",
   "author": {
     "name": "XQ Kuang",
-    "email": "xuqingkuang@qq.com"
+    "email": "x@kxq.io"
   },
   "keywords": [
     "react",
