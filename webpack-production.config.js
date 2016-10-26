@@ -1,7 +1,7 @@
 const webpack           = require('webpack');
 const config            = require('./webpack.config');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = Object.assign({}, config, {
   entry: [
@@ -20,10 +20,14 @@ module.exports = Object.assign({}, config, {
         from: '**/*'
       },
     ]),
+    new PolyfillsPlugin({
+      minify: true,
+      features: {
+        'Object.assign': {flags: ['always', 'gated']},
+        "fetch": {flags: ['always', 'gated']}
+      }
+    }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.ProvidePlugin({
-      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    })
+    new webpack.optimize.UglifyJsPlugin()
   ]
 })

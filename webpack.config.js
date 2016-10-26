@@ -16,20 +16,18 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new sassLint({
-      glob: 'src/**/*.scss',
-      failOnWarning: false
-    }),
     new PolyfillsPlugin({
       minify: true,
       features: {
         'Object.assign': {flags: ['always', 'gated']},
+        "fetch": {flags: ['always', 'gated']}
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    })
+    new sassLint({
+      glob: 'src/**/*.scss',
+      failOnWarning: false
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
