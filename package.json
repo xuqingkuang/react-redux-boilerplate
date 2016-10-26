@@ -26,7 +26,8 @@
     "build": "cross-env NODE_ENV=production webpack --display-error-details --config webpack-production.config.js",
     "clean": "rimraf dist",
     "lint": "tslint --force \"src/**/*.ts*\" && sass-lint -v -q src/**/*.scss",
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+    "ghpages": "minify assets/index.html > dist/index.html && gh-pages -d dist"
   },
   "jest": {
     "collectCoverage": true,
@@ -74,9 +75,11 @@
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
     "file-loader": "^0.9.0",
+    "gh-pages": "^0.11.0",
     "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.6.5",
     "jest-cli": "^16.0.2",
+    "minify": "^2.0.12",
     "react-addons-test-utils": "^15.3.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
