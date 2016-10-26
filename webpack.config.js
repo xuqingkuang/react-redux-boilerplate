@@ -6,7 +6,6 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://0.0.0.0:8000',
-    'webpack/hot/dev-server',
     './src/app'
   ],
   output: {
@@ -29,7 +28,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   devServer: {
-    hot: true,
+    hotOnly: true,
     contentBase: 'assets/',
     host: '0.0.0.0',
     port: '8000'
@@ -58,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts',
+        loaders: 'ts',
         exclude: /node_modules/
       },
       {
