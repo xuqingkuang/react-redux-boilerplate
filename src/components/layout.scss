@@ -1,0 +1,36 @@
+$linkhormal: #39c;
+$linkhover: #94c;
+
+.container {
+  margin: 0 auto;
+  width: 860px;
+
+  header {
+    float: left;
+    position: fixed;
+    width: 270px;
+
+    a {
+      color: $linkhormal;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        color: $linkhover;
+      }
+    }
+  }
+
+  footer {
+    bottom: 50px;
+    float: left;
+    position: fixed;
+    width: 270px;
+  }
+
+  .content {
+    float: right;
+    padding-bottom: 50px;
+    width: 500px;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true
+  },
+  "files": [
+    "./src/app.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,5 +1,4 @@
-/* Babel Polyfill */
-require('babel-polyfill');
+declare var window: any;
 
 /* Redux */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -9,19 +8,19 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import * as reactRouter from 'react-router';
 
 /* Reducers */
-import * as reducers from './reducers';
+import { titleReducer } from './reducers/titles';
 
 /* App configs */
 import config from './config';
 
 /* Combine Reducers */
 const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer
+  routing: routerReducer,
+  titleReducer,
 });
 
 /* Initial the store */
-const configureStore = (initialState) => {
+function configureStore(initialState: any): any {
   // Initial the redux devtools for Chrome
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
@@ -29,23 +28,29 @@ const configureStore = (initialState) => {
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 
-  if (module.hot) {
+  const { hot } = module as any;
+  if (hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      const reducers = require('./reducers');
+    hot.accept('./reducers', () => {
+      const titleReducer = require('./reducers/titles');
       const nextReducer = combineReducers({
-        ...reducers,
-        routing: routerReducer
+        routing: routerReducer,
+        titleReducer,
       });
-      store.replaceReducer(nextReducer);
+      createdStore.replaceReducer(nextReducer);
     });
   }
 
   return createdStore;
 }
-export const store = configureStore();
+
+export const store = configureStore({});
 
 /* Initial history */
-export const history = syncHistoryWithStore(
-  reactRouter[config.historyBackend], store
-)
+let routerHistory: any;
+if (config.historyBackend === 'browserHistory') {
+  routerHistory = reactRouter.browserHistory;
+} else {
+  routerHistory = reactRouter.hashHistory;
+}
+export const history = syncHistoryWithStore(routerHistory, store);

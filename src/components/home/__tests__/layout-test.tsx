@@ -1,11 +1,14 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import * as React from 'react';
+import * as TestUtils from 'react-addons-test-utils';
 import Layout from '../layout';
 
-jest.unmock('../layout');
-jest.unmock('../welcome');
+interface ISetup {
+  props: any;
+  output: any;
+  renderer: any;
+}
 
-function setup() {
+const setup = (): ISetup => {
   let props = {};
 
   const renderer = TestUtils.createRenderer();
@@ -15,9 +18,9 @@ function setup() {
   return {
     props,
     output,
-    renderer
-  }
-}
+    renderer,
+  };
+};
 
 describe('components', () => {
   describe('Layout', () => {
@@ -29,5 +32,5 @@ describe('components', () => {
       const children = output.props.children;
       expect(children[0].type.displayName).toBe('Connect(Welcome)');
     });
-  })
+  });
 });

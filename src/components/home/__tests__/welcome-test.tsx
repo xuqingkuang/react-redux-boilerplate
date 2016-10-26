@@ -1,53 +1,64 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import * as React from 'react';
+import * as TestUtils from 'react-addons-test-utils';
 import {Welcome, mapStateToProps} from '../welcome';
 import {getNextTitle} from '../../../actions/titles';
 
-jest.unmock('../welcome');
+interface ISetup {
+  props: any;
+  output: any;
+  renderer: any;
+}
 
-function setup() {
+jest.useFakeTimers();
+
+const setup = (): ISetup => {
   const props = {
-    getNextTitle: getNextTitle
+    getNextTitle: getNextTitle,
   };
 
   const renderer = TestUtils.createRenderer();
-  renderer.render(<Welcome {...props} />);
+  renderer.render(<Welcome getNextTitle={ props.getNextTitle } />);
   const output = renderer.getRenderOutput();
-  jest.clearAllTimers()
+  jest.clearAllTimers();
 
   return {
     props,
     output,
-    renderer
-  }
-}
+    renderer,
+  };
+};
 
 describe('components', () => {
   describe('Welcome', () => {
     it('should render correctly', () => {
-      const {output} = setup();
+      const { output } = setup();
       expect(output.type).toBe('h3');
     });
     it('interval should create/destroy after component mounted/umounted', () => {
-      const {props} = setup();
-      const component = TestUtils.renderIntoDocument(<Welcome {...props} />);
+      const { props } = setup();
+      const component = TestUtils.renderIntoDocument(<Welcome getNextTitle={ props.getNextTitle } />);
       expect(component.interval).toBe(1);
       jest.runOnlyPendingTimers();
-      component.componentWillUnmount()
+      component.componentWillUnmount();
       expect(component.interval).toBe(1);
     });
     it('title clicked should update text content', () => {
       // TODO: Need to test componentDidMount and componentWillUnmount
-      const {output} = setup();
+      const { output } = setup();
       // FIXME: Need a better way to test the clicked callback
-      expect(output.props.onClick()).toBe(undefined);
+      expect(output.props.onClick()).toEqual({
+        "title": "React Redux Boilerplate",
+        "type": "GET_NEXT_TITLE"
+      });
       // Workaround to test mapStateToProps
       const mapStateToPropsArgs = {
-        titles: {
-          title: 'test'
-        }
+        titleReducer: {
+          title: 'test',
+        },
       };
-      expect(mapStateToProps(mapStateToPropsArgs)).toEqual(mapStateToPropsArgs.titles);
+      expect(mapStateToProps(mapStateToPropsArgs)).toEqual(
+        mapStateToPropsArgs.titleReducer
+      );
     });
-  })
+  });
 });
