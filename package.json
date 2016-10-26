@@ -1,6 +1,6 @@
 {
   "name": "react-redux-boilerplate",
-  "version": "2.0.0",
+  "version": "2.0.0-beta.1",
   "description": "React Redux Boilerplate",
   "homepage": "https://github.com/xuqingkuang/react-redux-boilerplate",
   "author": {
@@ -9,12 +9,16 @@
   },
   "main": "dist/bundle.js",
   "keywords": [
+    "typescript",
     "react",
     "redux",
-    "typescript",
+    "jest",
+    "scss",
+    "sass",
     "boilerplate",
-    "gulp",
-    "express"
+    "webpack-dev-server",
+    "yarn",
+    "hmr"
   ],
   "license": "MIT",
   "repository": {

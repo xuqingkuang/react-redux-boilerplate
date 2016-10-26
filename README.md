@@ -15,7 +15,7 @@ Another template that makes React and redux web app developmet easier.
 
 * TypeScript 2, no babel required
 * Unit testing covered with Jest
-* Different config for different environment.
+* Different configs for different environment.
 * React 15
 * React Router 2.8
 * Redux 3.6 (Predictable state container)
@@ -76,6 +76,8 @@ The all files in `dist` folder will be removed.
 ## Structure
 
     react-redux-boilerplate           - Project root
+    |-- __mocks__                     - Jest mocks, see package.json jest section.
+    |   `-- file-mock                 - Mock for static handler
     |-- assets                        - Static resources
     |   |-- imgs                      - Static Images
     |   `-- index.html                - Entrance html
