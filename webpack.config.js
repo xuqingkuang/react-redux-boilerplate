@@ -1,6 +1,7 @@
 const path              = require('path');
 const webpack           = require('webpack');
 const sassLint          = require('sasslint-webpack-plugin');
+const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = {
   entry: [
@@ -18,6 +19,12 @@ module.exports = {
     new sassLint({
       glob: 'src/**/*.scss',
       failOnWarning: false
+    }),
+    new PolyfillsPlugin({
+      minify: true,
+      features: {
+        'Object.assign': {flags: ['always', 'gated']},
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({

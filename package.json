@@ -99,6 +99,7 @@
     "typescript": "^2.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.9"
+    "webpack-dev-server": "^2.1.0-beta.9",
+    "webpack-polyfill-service-plugin": "0.0.2"
   }
 }
