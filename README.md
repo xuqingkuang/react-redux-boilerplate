@@ -21,7 +21,8 @@ Another template that makes React and redux web app developmet easier.
 * Redux 3.6 (Predictable state container)
 * Sass css pre-processor with lint
 * Yarn supported
-* Redux Devtools for Chrome Extension supported(Better than redux-logger)
+* Webpack 2 + webpack-dev-server 2
+* Redux Devtools for Chrome Extension supported (Better than redux-logger)
 * Browser live reload
 
 If you are interested, please read the `package.json` file for all installed modules.
