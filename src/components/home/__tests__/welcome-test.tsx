@@ -47,8 +47,8 @@ describe('components', () => {
       const { output } = setup();
       // FIXME: Need a better way to test the clicked callback
       expect(output.props.onClick()).toEqual({
-        "title": "React Redux Boilerplate",
-        "type": "GET_NEXT_TITLE"
+        'type': 'GET_NEXT_TITLE',
+        'title': 'React Redux Boilerplate',
       });
       // Workaround to test mapStateToProps
       const mapStateToPropsArgs = {

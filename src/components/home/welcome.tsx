@@ -15,7 +15,18 @@ export class Welcome extends Component<IProps, any> {
 
   private interval: any;
 
-  public render () {
+  public componentDidMount() {
+    this.interval = setInterval(() => {
+      const { getNextTitle, title } = this.props;
+      getNextTitle(title);
+    }, 1000);
+  }
+
+  public componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  public render() {
     const { getNextTitle, title } = this.props;
     return (
       <h3 onClick={ () => getNextTitle(title) }>
@@ -23,18 +34,6 @@ export class Welcome extends Component<IProps, any> {
       </h3>
     );
   }
-
-  private componentDidMount () {
-    this.interval = setInterval(() => {
-      const { getNextTitle, title } = this.props;
-      getNextTitle(title);
-    }, 1000);
-  }
-
-  private componentWillUnmount () {
-    clearInterval(this.interval);
-  }
-
 }
 
 // State to props for connect argument

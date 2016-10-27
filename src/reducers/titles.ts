@@ -12,7 +12,7 @@ const titleReducer = (state: any = initialState, action: any) => {
       };
     default:
       return state;
-  };
+  }
 };
 
 export { titleReducer };

@@ -12,7 +12,7 @@ const setup = (): ISetup => {
   const props = {
     children: (
       <div></div>
-    )
+    ),
   };
 
   const renderer = TestUtils.createRenderer();
@@ -22,9 +22,9 @@ const setup = (): ISetup => {
   return {
     props,
     output,
-    renderer
-  }
-}
+    renderer,
+  };
+};
 
 describe('components', () => {
   describe('Layout', () => {
@@ -38,5 +38,5 @@ describe('components', () => {
       expect(section.type).toBe('section');
       expect(footer.type).toBe('footer');
     });
-  })
+  });
 });

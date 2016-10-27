@@ -8,21 +8,21 @@ describe('titles reducer', () => {
     expect(
       titleReducer(undefined, {})
     ).toEqual({
-      title: constants.TITLES[0]
-    })
+      title: constants.TITLES[0],
+    });
   });
 
   it('Should return correct title', () => {
     for (let i = 0; i < constants.TITLES.length; i++) {
       const action = {
         type: constants.GET_NEXT_TITLE,
-        title: constants.TITLES[i]
-      }
+        title: constants.TITLES[i],
+      };
       expect(
         titleReducer(undefined, action)
       ).toEqual({
-        title: constants.TITLES[i]
+        title: constants.TITLES[i],
       });
     }
   });
-})
+});

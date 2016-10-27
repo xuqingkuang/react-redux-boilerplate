@@ -18,9 +18,9 @@ const setup = (): ISetup => {
   return {
     props,
     output,
-    renderer
-  }
-}
+    renderer,
+  };
+};
 
 describe('components', () => {
   describe('NotFound', () => {
@@ -30,5 +30,5 @@ describe('components', () => {
       expect(output.type).toBe('div');
       expect(output.props.children).toBe('The page you request is not exist.');
     });
-  })
+  });
 });

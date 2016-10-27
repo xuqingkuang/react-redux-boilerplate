@@ -9,8 +9,8 @@ describe('titles actions', () => {
       getNextTitle()
     ).toEqual({
       type: constants.GET_NEXT_TITLE,
-      title: constants.TITLES[0]
-    })
+      title: constants.TITLES[0],
+    });
   });
 
   it('Should return correct next title', () => {
@@ -19,7 +19,7 @@ describe('titles actions', () => {
         getNextTitle(constants.TITLES[i])
       ).toEqual({
         type: constants.GET_NEXT_TITLE,
-        title: constants.TITLES[i + 1]
+        title: constants.TITLES[i + 1],
       });
     }
   });
