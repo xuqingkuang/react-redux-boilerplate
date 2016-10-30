@@ -27,6 +27,7 @@ module.exports = {
       glob: 'src/**/*.scss',
       failOnWarning: false
     }),
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
