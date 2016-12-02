@@ -37,7 +37,7 @@ module.exports = {
     hotOnly: true,
     contentBase: 'assets/',
     host: '0.0.0.0',
-    port: '8000'
+    port: 8000
   },
   module: {
     rules: [
@@ -63,17 +63,17 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loaders: 'ts',
+        loaders: 'ts-loader',
         exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css'],
+        loaders: ['style-loader', 'css-loader'],
         exclude: /node_modules/
       }
     ]
