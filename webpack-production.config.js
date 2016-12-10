@@ -27,7 +27,6 @@ module.exports = Object.assign({}, config, {
         "fetch": {flags: ['always', 'gated']}
       }
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ]
 })

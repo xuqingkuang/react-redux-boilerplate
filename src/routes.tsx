@@ -4,10 +4,10 @@ import { StatelessComponent } from 'react';
 
 /* React Router */
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute } from 'react-router';
+import { IndexRoute, Route, Router } from 'react-router';
 
 /* Router dependencies preparing */
-import { store, history } from './prepare';
+import { history, store } from './prepare';
 
 /* App configs */
 import config from './config';

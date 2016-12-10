@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { getNextTitle } from '../../actions/titles';
 
 // Welcome component

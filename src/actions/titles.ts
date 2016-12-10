@@ -1,4 +1,4 @@
-import { TITLES, GET_NEXT_TITLE } from '../constants';
+import { GET_NEXT_TITLE, TITLES } from '../constants';
 
 export const getNextTitle = (title: string) => {
   let nextIndex = 0;

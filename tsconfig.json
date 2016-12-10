@@ -9,7 +9,8 @@
     "jsx": "react",
     "sourceMap": true,
     "noImplicitAny": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "alwaysStrict": true
   },
   "files": [
     "./src/app.tsx"
