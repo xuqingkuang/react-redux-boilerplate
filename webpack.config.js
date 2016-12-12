@@ -6,7 +6,6 @@ const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://0.0.0.0:8000',
     './src/app'
   ],
   output: {

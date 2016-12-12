@@ -36,7 +36,7 @@
   "jest": {
     "collectCoverage": true,
     "transform": {
-      ".*":  "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".*": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
     "testRegex": "(/__tests__/.*|\\.(test))\\.(ts|tsx)$",
@@ -72,6 +72,7 @@
     "@types/react": "^0.14.54",
     "@types/react-addons-test-utils": "^0.14.15",
     "@types/react-dom": "^0.14.19",
+    "@types/react-hot-loader": "^3.0.0",
     "@types/react-redux": "^4.4.35",
     "@types/react-router": "^2.0.41",
     "@types/react-router-redux": "^4.0.35",
