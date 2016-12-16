@@ -1,8 +1,3 @@
-/* Promise polyfill */
-declare var window: any;
-import * as Promise from 'bluebird';
-window.Promise = Promise;
-
 /* Import the requirements */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
