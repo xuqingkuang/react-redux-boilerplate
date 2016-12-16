@@ -11,9 +11,9 @@ module.exports = {
   output: {
     path: path.resolve('./dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'app.js'
   },
-  devtool: 'source-map',
+  devtool: 'eval',
   plugins: [
     new PolyfillsPlugin({
       minify: true,
@@ -25,6 +25,11 @@ module.exports = {
     new sassLint({
       glob: 'src/**/*.scss',
       failOnWarning: false
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./manifest.json'),
+      sourceType: 'var'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()

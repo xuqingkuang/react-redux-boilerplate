@@ -27,6 +27,11 @@ module.exports = Object.assign({}, config, {
         "fetch": {flags: ['always', 'gated']}
       }
     }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./manifest.json'),
+      sourceType: 'var'
+    }),
     new webpack.optimize.UglifyJsPlugin()
   ]
 })

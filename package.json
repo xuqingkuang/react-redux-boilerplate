@@ -1,13 +1,12 @@
 {
   "name": "react-redux-boilerplate",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.3",
   "description": "React Redux Boilerplate",
   "homepage": "https://github.com/xuqingkuang/react-redux-boilerplate",
   "author": {
     "name": "XQ Kuang",
     "email": "x@kxq.io"
   },
-  "main": "dist/bundle.js",
   "keywords": [
     "typescript",
     "react",
@@ -27,7 +26,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack --display-error-details --config webpack-production.config.js",
+    "build": "cross-env NODE_ENV=production webpack --display-error-details --config webpack-production.config.js && uglifyjs ./assets/vendor.js > dist/vendor.js && rm ./dist/*.map",
+    "buildvendor": "webpack --config webpack-vendor.config.js",
     "clean": "rimraf dist",
     "lint": "tslint --force \"src/**/*.ts*\" && sass-lint -v -q src/**/*.scss",
     "test": "jest --no-cache",
@@ -100,6 +100,7 @@
     "tslint": "^4.0.2",
     "tslint-loader": "^3.3.0",
     "typescript": "^2.1.4",
+    "uglify-js": "^2.7.5",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.26",
     "webpack-dev-server": "^2.1.0-beta.12",

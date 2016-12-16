@@ -19,13 +19,14 @@ Another template that makes React and redux web app developmet easier.
 * Unit testing covered with Jest
 * Different configs for different environment.
 * React 15
-* React Router 2.8
+* React Router 3
 * Redux 3.6 (Predictable state container)
 * Sass css pre-processor with lint
 * Yarn supported
 * Webpack 2 + webpack-dev-server 2
 * Redux Devtools for Chrome Extension supported (Better than redux-logger)
 * Browser live reload
+* Using Webpack DllReferencePlugin plugin to optimize build speed
 
 If you are interested, please read the `package.json` file for all installed modules.
 
@@ -43,6 +44,19 @@ Feel free to contribute or fork it if you find this repo could help the communit
 2. Install the dependencies - `$ cd react-redux-boilerplate && yarn`
 
 ## Executions
+
+### Build the vendor libraries
+
+    $ npm run buildvendor
+
+The command will genderate the vendors package at first time. It's using `webpack.DllReferencePlugin`
+to splite code to be `vendor.js` and `app.js`,
+
+`vendor.js` contains the libraries defined in `webpack-vendor.config.js`, you may add more
+items if you need splite the dependencies building from application.
+`app.js` was the code build from `src`.
+
+By using this feature, the build speed is much faster.
 
 ### Start develop environment
 
@@ -82,7 +96,8 @@ The all files in `dist` folder will be removed.
     |   `-- file-mock                 - Mock for static handler
     |-- assets                        - Static resources
     |   |-- imgs                      - Static Images
-    |   `-- index.html                - Entrance html
+    |   |-- index.html                - Entrance html
+    |   `-- vendor.js                 - The file contains libraries
     |-- coverage                      - Testing coverage report generated
     |   `-- icov-report
     |       `-- index.html            - Graphic testing coverage report
@@ -111,13 +126,15 @@ The all files in `dist` folder will be removed.
     |       |-- index.ts
     |       `-- titles.ts
     |-- dist                          - Built app for production
-    |   |-- bundle.js                 - Built Javascript
-    |   |-- bundle.js.map             - Source map for Built Javascript
+    |   |-- app.js                    - Built Javascript
+    |   |-- app.js.map                - Source map for Built Javascript
     |   |-- imgs                      - Static images
-    |   `-- index.html                - Same entrance in 'assets'
+    |   |-- index.html                - Entrance html
+    |   `-- vendor.js                 - The file contains libraries
     |-- .travis.yml                   - Travis CI config
     |-- LICENSE                       - Copyright notice
     |-- README.md                     - This file
     |-- package.json                  - Package informations
     |-- webpack.config.js             - Development build configuration
-    `-- webpack-production.config.js  - Production build configuration
+    |-- webpack-production.config.js  - Production build configuration
+    `-- webpack-vendor.config.js      - Pre build the libraries
