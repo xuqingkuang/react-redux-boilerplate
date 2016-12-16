@@ -1,17 +1,18 @@
 const path              = require('path');
 const webpack           = require('webpack');
-const sassLint          = require('sasslint-webpack-plugin');
 const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/app'
-  ],
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      './src/app'
+    ]
+  },
   output: {
     path: path.resolve('./dist'),
     publicPath: '/',
-    filename: 'app.js'
+    filename: '[name].js',
   },
   devtool: 'eval',
   plugins: [
@@ -21,10 +22,6 @@ module.exports = {
         'Object.assign': {flags: ['always', 'gated']},
         "fetch": {flags: ['always', 'gated']}
       }
-    }),
-    new sassLint({
-      glob: 'src/**/*.scss',
-      failOnWarning: false
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
@@ -56,12 +53,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: /node_modules/,
-        enforce: 'pre',
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'tslint-loader',
         exclude: /node_modules/,
         enforce: 'pre',
       },

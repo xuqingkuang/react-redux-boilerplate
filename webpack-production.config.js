@@ -4,10 +4,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = Object.assign({}, config, {
-  entry: [
-    './src/app'
-  ],
-  devtool: 'source-map',
+  entry: {
+    app: {
+      './src/app'
+    }
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
