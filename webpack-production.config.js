@@ -5,9 +5,9 @@ const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = Object.assign({}, config, {
   entry: {
-    app: {
+    app: [
       './src/app'
-    }
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -24,7 +24,6 @@ module.exports = Object.assign({}, config, {
     new PolyfillsPlugin({
       minify: true,
       features: {
-        'Object.assign': {flags: ['always', 'gated']},
         "fetch": {flags: ['always', 'gated']}
       }
     }),
