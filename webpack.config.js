@@ -19,7 +19,6 @@ module.exports = {
     new PolyfillsPlugin({
       minify: true,
       features: {
-        'Object.assign': {flags: ['always', 'gated']},
         "fetch": {flags: ['always', 'gated']}
       }
     }),

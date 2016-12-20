@@ -16,7 +16,7 @@ let config: IConfig = {
 
 /* Construct configs from environment */
 if (process && typeof process.env.NODE_ENV !== 'undefined') {
-  Object.assign(config, require(`./${process.env.NODE_ENV}`).default);
+  config = {...config, ...require(`./${process.env.NODE_ENV}`).default};
 }
 
 /* Freezed the config object, make it not able to be modified */

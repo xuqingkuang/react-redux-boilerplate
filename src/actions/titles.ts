@@ -1,6 +1,6 @@
 import { GET_NEXT_TITLE, TITLES } from '../constants';
 
-export const getNextTitle = (title: string) => {
+const getNextTitle = (title: string) => {
   let nextIndex = 0;
   if (title) {
     nextIndex = TITLES.indexOf(title) + 1;
@@ -12,4 +12,8 @@ export const getNextTitle = (title: string) => {
     type: GET_NEXT_TITLE,
     title: TITLES[nextIndex],
   };
+};
+
+export {
+  getNextTitle,
 };

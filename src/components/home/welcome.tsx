@@ -4,14 +4,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { getNextTitle } from '../../actions/titles';
 
-// Welcome component
-interface IProps {
+interface IConnectedProps {
   getNextTitle?: any;
+}
+
+// Welcome component
+interface IProps extends IConnectedProps {
   title?: string;
 };
 
 // Export the class for testing
-export class Welcome extends Component<IProps, any> {
+export class Welcome extends Component<IProps, void> {
 
   private interval: any;
 
@@ -44,10 +47,8 @@ export const mapStateToProps = (state: any): IProps => {
 };
 
 // Dispatch to props for connect argument
-const mapDispatchToProps = (dispatch: Dispatch<any>): IProps => {
-  return {
-    getNextTitle: bindActionCreators(getNextTitle, dispatch),
-  };
+const mapDispatchToProps = {
+  getNextTitle,
 };
 
 // Conect the component with Redux

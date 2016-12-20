@@ -10,7 +10,8 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "noEmitOnError": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "importHelpers": true
   },
   "files": [
     "./src/app.tsx"

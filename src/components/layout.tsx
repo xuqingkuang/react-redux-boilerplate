@@ -3,7 +3,7 @@ import { StatelessComponent } from 'react';
 import './layout.scss';
 
 interface ILayout {
-  children: any;
+  children: React.ComponentElement<any, any>;
 }
 
 const Layout: StatelessComponent<ILayout> = ({ children }): any => {
