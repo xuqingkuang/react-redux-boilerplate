@@ -1,6 +1,6 @@
 import { GET_NEXT_TITLE, TITLES } from '../constants';
 
-const getNextTitle = (title: string) => {
+const getNextTitle = (title?: string) => {
   let nextIndex = 0;
   if (title) {
     nextIndex = TITLES.indexOf(title) + 1;
