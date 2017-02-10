@@ -74,7 +74,7 @@
     "@types/react-dom": "^0.14.23",
     "@types/react-hot-loader": "^3.0.1",
     "@types/react-redux": "^4.4.36",
-    "@types/react-router": "^2.0.44",
+    "@types/react-router": "^3.0.2",
     "@types/react-router-redux": "^4.0.40",
     "codecov": "^1.0.1",
     "copy-webpack-plugin": "^4.0.0",
