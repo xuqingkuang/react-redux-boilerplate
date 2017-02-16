@@ -11,7 +11,9 @@
     "noImplicitAny": true,
     "noEmitOnError": true,
     "alwaysStrict": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "files": [
     "./src/app.tsx"
