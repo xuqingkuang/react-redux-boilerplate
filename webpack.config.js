@@ -1,11 +1,12 @@
 const path              = require('path');
 const webpack           = require('webpack');
-const PolyfillsPlugin   = require('webpack-polyfill-service-plugin');
 
 module.exports = {
   entry: {
     app: [
       'react-hot-loader/patch',
+      'webpack-dev-server/client?http://0.0.0.0:8000',
+      'webpack/hot/only-dev-server',
       './src/app'
     ]
   },
@@ -14,14 +15,8 @@ module.exports = {
     publicPath: '/',
     filename: '[name].js',
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   plugins: [
-    new PolyfillsPlugin({
-      minify: true,
-      features: {
-        "fetch": {flags: ['always', 'gated']}
-      }
-    }),
     new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require('./manifest.json'),
@@ -34,10 +29,11 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   devServer: {
-    hotOnly: true,
+    hot: true,
     contentBase: 'assets/',
     host: '0.0.0.0',
-    port: 8000
+    port: 8000,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -57,8 +53,8 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loaders: 'ts-loader',
-        exclude: /node_modules/
+        loaders: ['react-hot-loader/webpack', 'ts-loader'],
+        exclude: /node_modules|(.*)\/__tests__\/(.*)/
       },
       {
         test: /\.scss$/,

@@ -3,9 +3,11 @@ import * as TestUtils from 'react-addons-test-utils';
 import Layout from '../layout';
 
 interface ISetup {
-  props: any;
-  output: any;
-  renderer: any;
+  props: {
+    children: React.ReactElement<any>;
+  };
+  output: React.ReactElement<any>;
+  renderer: TestUtils.ShallowRenderer;
 }
 
 const setup = (): ISetup => {

@@ -3,10 +3,10 @@ import { StatelessComponent } from 'react';
 import './layout.scss';
 
 interface ILayout {
-  children: React.ComponentElement<any, any>;
+  children: React.ReactElement<void>;
 }
 
-const Layout: StatelessComponent<ILayout> = ({ children }): any => {
+const Layout: StatelessComponent<ILayout> = ({ children }) => {
   return (
     <div className="container">
       <header>
@@ -28,7 +28,7 @@ const Layout: StatelessComponent<ILayout> = ({ children }): any => {
           <small>Hosted on GitHub Pages — Theme by
             <a href="https://github.com/orderedlist">orderedlist</a>
             and refined by
-            <a href="http://kuang.it">XQ Kuang</a>
+            <a href="http://kxq.io">XQ Kuang</a>
           </small>
         </p>
       </footer>

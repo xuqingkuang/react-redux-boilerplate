@@ -1,4 +1,4 @@
-# React Redux Boilerplate
+# React Redux Boilerplate 3
 
 [![Build Status](https://travis-ci.org/xuqingkuang/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/xuqingkuang/react-redux-boilerplate)
 [![codecov.io](https://codecov.io/github/xuqingkuang/react-redux-boilerplate/coverage.svg?branch=master)](https://codecov.io/github/xuqingkuang/react-redux-boilerplate?branch=master)
@@ -18,12 +18,12 @@ Another template that makes React and redux web app developmet easier.
 * TypeScript 2, no Babel required any more
 * Unit testing covered with Jest
 * Different configs for different environment.
-* React 15
-* React Router 3
-* Redux 3.6 (Predictable state container)
+* React 15.6 (Ready for React Fiber)
+* React Router 4
+* Redux 3.7 (Predictable state container)
 * Sass css pre-processor with lint
 * Yarn supported
-* Webpack 2 + webpack-dev-server 2
+* Webpack 3 + webpack-dev-server 2.5
 * Redux Devtools for Chrome Extension supported (Better than redux-logger)
 * Browser live reload
 * Using Webpack DllReferencePlugin plugin to optimize build speed
@@ -36,7 +36,7 @@ Feel free to contribute or fork it if you find this repo could help the communit
 
 ### Requirements
 
-* Node 6 LTS for building
+* Node 6 LTS for building, 8.x should be compatible but not tested yet.
 
 ### Start
 

@@ -3,20 +3,16 @@ import * as TestUtils from 'react-addons-test-utils';
 import NotFound from '../not-found';
 
 interface ISetup {
-  props: any;
-  output: any;
-  renderer: any;
+  output: React.ReactElement<any>;
+  renderer: TestUtils.ShallowRenderer;
 }
 
 const setup = (): ISetup => {
-  const props = {};
-
   const renderer = TestUtils.createRenderer();
-  renderer.render(<NotFound {...props} />);
+  renderer.render(<NotFound />);
   const output = renderer.getRenderOutput();
 
   return {
-    props,
     output,
     renderer,
   };

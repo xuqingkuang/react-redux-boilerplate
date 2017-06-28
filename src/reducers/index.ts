@@ -1,2 +1,11 @@
-import { titleReducer } from './titles';
-export { titleReducer };
+import { ReducersMapObject } from 'redux';
+import { ITitleState, titleReducer } from './titles';
+
+interface IState {
+  titleReducer: ITitleState;
+}
+
+export {
+  IState,
+  titleReducer,
+};

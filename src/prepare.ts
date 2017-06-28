@@ -1,11 +1,19 @@
 declare var window: any;
 
-/* Redux */
-import { routerReducer, syncHistoryWithStore } from 'react-router-redux';
-import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
+interface IHotNodeModule extends NodeModule {
+  hot: {
+    accept: (path: string, callback: () => void) => void;
+  };
+}
 
-/* React Router */
-import * as reactRouter from 'react-router';
+declare var module: IHotNodeModule;
+
+// Redux
+import { applyMiddleware, combineReducers, compose, createStore, Store  } from 'redux';
+
+// React router
+import { createBrowserHistory, createHashHistory } from 'history';
+import { LOCATION_CHANGED } from './constants';
 
 /* Reducers */
 import * as reducers from './reducers';
@@ -13,30 +21,30 @@ import * as reducers from './reducers';
 /* App configs */
 import config from './config';
 
-/* Combine Reducers */
+/**
+ * Combine reduers
+ */
 const reducer = combineReducers({
-  routing: routerReducer,
   ...reducers,
 });
 
-/* Initial the store */
-function configureStore(initialState: any): any {
+/**
+ * initial redux store
+ */
+function configureStore(initialState = {}): Store<{}> {
   // Initial the redux devtools for Chrome
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
     applyMiddleware(),
-    window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
+    process.env.NODE_ENV !== 'production' && window.devToolsExtension ? window.devToolsExtension() : (f: any) => f,
   ));
 
-  const { hot } = module as any;
+  const { hot } = module;
   if (hot) {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
-      const titleReducer = require('./reducers/titles');
-      const nextReducer = combineReducers({
-        routing: routerReducer,
-        titleReducer,
-      });
+      const reducers = require('./reducers');
+      const nextReducer = combineReducers(reducers);
       createdStore.replaceReducer(nextReducer);
     });
   }
@@ -44,13 +52,39 @@ function configureStore(initialState: any): any {
   return createdStore;
 }
 
-export const store = configureStore({});
+const store = configureStore();
 
-/* Initial history */
-let routerHistory: any;
-if (config.historyBackend === 'browserHistory') {
-  routerHistory = reactRouter.browserHistory;
-} else {
-  routerHistory = reactRouter.hashHistory;
-}
-export const history = syncHistoryWithStore(routerHistory, store);
+/**
+ * Create history
+ * and dispatch the location changed event.
+ */
+const history = ((historyMethod) => {
+  switch (historyMethod) {
+    case 'browser': {
+      return createBrowserHistory({
+        basename: config.router.basename,
+      });
+    }
+    case 'hash': {
+      return createHashHistory({
+        basename: config.router.basename,
+      });
+    }
+    default:
+      throw new TypeError(`Unsupport router history method: ${historyMethod}`);
+  }
+})(config.router.method);
+// Sync the history changes to store.
+history.listen((location) => {
+  store.dispatch({
+    type: LOCATION_CHANGED,
+    payload: {
+      location,
+    },
+  });
+});
+
+export {
+  store,
+  history,
+};

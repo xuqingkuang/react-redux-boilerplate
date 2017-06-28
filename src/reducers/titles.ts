@@ -1,19 +1,23 @@
 import { GET_NEXT_TITLE, TITLES } from '../constants';
+import { ITitleActionReturns } from '../actions/titles';
 
-interface ITitleAction {
-  type: string;
+interface ITitleState {
   title: string;
 }
 
-const initialState = {
+const initialTitleState: ITitleState = {
   title: TITLES[0],
 };
 
-const titleReducer = (state = initialState, action: ITitleAction) => {
+// FIXME: action should be ITitleActionReturns
+//        but conflict with redux/index.d.ts Action interface
+const titleReducer = (state = initialTitleState, action: any): ITitleState => {
   switch (action.type) {
     case GET_NEXT_TITLE:
+      const { nextIndex } = action.payload;
+      const title = TITLES[nextIndex];
       return {
-        title: action.title,
+        title,
       };
     default:
       return state;
@@ -21,5 +25,6 @@ const titleReducer = (state = initialState, action: ITitleAction) => {
 };
 
 export {
+  ITitleState,
   titleReducer,
 };

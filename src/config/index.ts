@@ -1,17 +1,19 @@
 interface IConfig {
-  historyBackend?: string;
-  urlPrefix?: string;
+  router: {
+    method: 'hash' | 'browser';
+    basename: string;
+  };
 }
 
 /* Default config for develope enviroment */
 let config: IConfig = {
-  /* React router history backend */
-  historyBackend: 'browserHistory',
-
   /* The app placed path prefix, for development server, it used '/' by default,
    * For github demo page, it will changed to 'react-redux-boilerplate'.
    */
-  urlPrefix: '/',
+  router: {
+    method: 'browser',
+    basename: '/',
+  },
 };
 
 /* Construct configs from environment */

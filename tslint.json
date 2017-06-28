@@ -1,6 +1,8 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "quotemark": [ true, "single", "jsx-double" ]
+    "object-literal-sort-keys": false,
+    "quotemark": [ true, "single", "jsx-double" ],
+    "ordered-imports": [ false ]
   }
 }

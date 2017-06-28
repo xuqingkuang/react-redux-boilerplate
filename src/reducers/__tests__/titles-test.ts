@@ -5,8 +5,14 @@ import * as constants from '../../constants';
 
 describe('titles reducer', () => {
   it('should return the initial state', () => {
+    const action = {
+      type: 'ANTOHER_ACTION',
+      payload: {
+        nextIndex: 123,
+      },
+    };
     expect(
-      titleReducer(undefined, {})
+      titleReducer(undefined, action),
     ).toEqual({
       title: constants.TITLES[0],
     });
@@ -16,10 +22,12 @@ describe('titles reducer', () => {
     for (let i = 0; i < constants.TITLES.length; i++) {
       const action = {
         type: constants.GET_NEXT_TITLE,
-        title: constants.TITLES[i],
+        payload: {
+          nextIndex: i,
+        },
       };
       expect(
-        titleReducer(undefined, action)
+        titleReducer(undefined, action),
       ).toEqual({
         title: constants.TITLES[i],
       });

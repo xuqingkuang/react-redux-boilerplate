@@ -1,7 +1,7 @@
-/* Import actions */
-import { getNextTitle } from '../titles';
 /* Import constants */
 import * as constants from '../../constants';
+/* Import actions */
+import { getNextTitle } from '../titles';
 
 describe('titles actions', () => {
   it('should return the initial state', () => {
@@ -9,7 +9,9 @@ describe('titles actions', () => {
       getNextTitle(),
     ).toEqual({
       type: constants.GET_NEXT_TITLE,
-      title: constants.TITLES[0],
+      payload: {
+        nextIndex: 0,
+      },
     });
   });
 
@@ -19,7 +21,9 @@ describe('titles actions', () => {
         getNextTitle(constants.TITLES[i]),
       ).toEqual({
         type: constants.GET_NEXT_TITLE,
-        title: constants.TITLES[i + 1],
+        payload: {
+          nextIndex: i + 1,
+        },
       });
     }
   });
@@ -29,7 +33,9 @@ describe('titles actions', () => {
       getNextTitle(constants.TITLES[constants.TITLES.length - 1]),
     ).toEqual({
       type: constants.GET_NEXT_TITLE,
-      title: constants.TITLES[0],
+      payload: {
+        nextIndex: 0,
+      },
     });
   });
 });

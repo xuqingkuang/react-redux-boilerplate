@@ -1,2 +1,4 @@
 import * as titleActions from './titles';
-export { titleActions };
+export {
+  titleActions,
+};

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatelessComponent } from 'react';
 import Welcome from './welcome';
 
-const HomeLayout: StatelessComponent<any> = (): any => {
+const HomeLayout: StatelessComponent<{}> = () => {
   return (
     <div>
       <Welcome />

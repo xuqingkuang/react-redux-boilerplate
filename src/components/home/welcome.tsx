@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { IState } from '../../reducers';
 import { getNextTitle } from '../../actions/titles';
 
 interface IConnectedProps {
-  getNextTitle?: any;
+  title: string;
 }
 
 // Welcome component
 interface IProps extends IConnectedProps {
-  title?: string;
-};
+  getNextTitle: (currentTitle: string) => void;
+}
 
 // Export the class for testing
-export class Welcome extends Component<IProps, void> {
+class Welcome extends PureComponent<IProps> {
 
-  private interval: any;
+  public interval: any;
 
   public componentDidMount() {
     this.interval = setInterval(() => {
@@ -40,7 +40,7 @@ export class Welcome extends Component<IProps, void> {
 }
 
 // State to props for connect argument
-export const mapStateToProps = (state: any): IProps => {
+const mapStateToProps = (state: IState): IConnectedProps => {
   return {
     title: state.titleReducer.title,
   };
@@ -52,7 +52,11 @@ const mapDispatchToProps = {
 };
 
 // Conect the component with Redux
-export default connect(
+export default connect<IConnectedProps, IProps, any>(
   mapStateToProps,
   mapDispatchToProps,
 )(Welcome);
+export {
+  Welcome,
+  mapStateToProps,
+};
