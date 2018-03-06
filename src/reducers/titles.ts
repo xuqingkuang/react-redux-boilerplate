@@ -5,11 +5,15 @@ interface ITitleAction {
   title: string;
 }
 
-const initialState = {
+interface ITitleState {
+  title: string;
+}
+
+const initialState: ITitleState = {
   title: TITLES[0],
 };
 
-const titleReducer = (state = initialState, action: ITitleAction) => {
+function titleReducer(state = initialState, action: ITitleAction): ITitleState {
   switch (action.type) {
     case GET_NEXT_TITLE:
       return {
@@ -18,8 +22,9 @@ const titleReducer = (state = initialState, action: ITitleAction) => {
     default:
       return state;
   }
-};
+}
 
 export {
+  ITitleState,
   titleReducer,
 };

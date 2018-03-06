@@ -3,7 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/",
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
@@ -23,7 +23,7 @@
     ]
   },
   "files": [
-    "./src/app.tsx"
+    "./src/index.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { getNextTitle } from '../../actions/titles';
+import { IReducer } from '../../reducers';
 
 interface IConnectedProps {
   getNextTitle?: any;
@@ -11,17 +12,17 @@ interface IConnectedProps {
 // Welcome component
 interface IProps extends IConnectedProps {
   title?: string;
-};
+}
 
 // Export the class for testing
-export class Welcome extends Component<IProps, void> {
+export class Welcome extends Component<IProps, {}> {
 
   private interval: any;
 
   public componentDidMount() {
     this.interval = setInterval(() => {
-      const { getNextTitle, title } = this.props;
-      getNextTitle(title);
+      const { getNextTitle: gnt, title } = this.props;
+      gnt(title);
     }, 1000);
   }
 
@@ -30,9 +31,9 @@ export class Welcome extends Component<IProps, void> {
   }
 
   public render() {
-    const { getNextTitle, title } = this.props;
+    const { getNextTitle: gnt, title } = this.props;
     return (
-      <h3 onClick={ () => getNextTitle(title) }>
+      <h3 onClick={ () => gnt(title) }>
         Welcome to { title }.
       </h3>
     );
@@ -40,7 +41,7 @@ export class Welcome extends Component<IProps, void> {
 }
 
 // State to props for connect argument
-export const mapStateToProps = (state: any): IProps => {
+export const mapStateToProps = (state: IReducer): IProps => {
   return {
     title: state.titleReducer.title,
   };
@@ -52,7 +53,4 @@ const mapDispatchToProps = {
 };
 
 // Conect the component with Redux
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Welcome);
+export default connect<IConnectedProps, IConnectedProps, void>(mapStateToProps, mapDispatchToProps)(Welcome);

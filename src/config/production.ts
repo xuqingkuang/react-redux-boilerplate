@@ -1,6 +1,6 @@
 interface IProductionConfig {
   urlPrefix?: string;
-  historyBackend?: string;
+  historyBackend: string;
 }
 
 /* Config for production enviroment */

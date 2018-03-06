@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as TestUtils from 'react-addons-test-utils';
-import Layout from '../layout';
+import * as ShallowRenderer from 'react-test-renderer/shallow';
+import Home from '../index';
 
 interface ISetup {
   props: any;
@@ -8,11 +8,11 @@ interface ISetup {
   renderer: any;
 }
 
-const setup = (): ISetup => {
-  let props = {};
+function setup(): ISetup {
+  const props = {};
 
-  const renderer = TestUtils.createRenderer();
-  renderer.render(<Layout {...props} />);
+  const renderer = ShallowRenderer.createRenderer();
+  renderer.render(<Home {...props} />);
   const output = renderer.getRenderOutput();
 
   return {
@@ -20,7 +20,7 @@ const setup = (): ISetup => {
     output,
     renderer,
   };
-};
+}
 
 describe('components', () => {
   describe('Layout', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as TestUtils from 'react-addons-test-utils';
+import * as ShallowRenderer from 'react-test-renderer/shallow';
 import NotFound from '../not-found';
 
 interface ISetup {
@@ -8,10 +8,10 @@ interface ISetup {
   renderer: any;
 }
 
-const setup = (): ISetup => {
+function setup(): ISetup {
   const props = {};
 
-  const renderer = TestUtils.createRenderer();
+  const renderer = ShallowRenderer.createRenderer();
   renderer.render(<NotFound {...props} />);
   const output = renderer.getRenderOutput();
 
@@ -20,7 +20,7 @@ const setup = (): ISetup => {
     output,
     renderer,
   };
-};
+}
 
 describe('components', () => {
   describe('NotFound', () => {

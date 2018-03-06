@@ -1,11 +1,12 @@
 declare var window: any;
 
 /* Redux */
-import { routerReducer, syncHistoryWithStore } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
 
 /* React Router */
-import * as reactRouter from 'react-router';
+import { History } from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
+import createHashHistory from 'history/createHashHistory';
 
 /* Reducers */
 import * as reducers from './reducers';
@@ -14,10 +15,7 @@ import * as reducers from './reducers';
 import config from './config';
 
 /* Combine Reducers */
-const reducer = combineReducers({
-  routing: routerReducer,
-  ...reducers,
-});
+const reducer = combineReducers(reducers);
 
 /* Initial the store */
 function configureStore(initialState: any): any {
@@ -25,18 +23,14 @@ function configureStore(initialState: any): any {
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
     applyMiddleware(),
-    window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
+    window.devToolsExtension ? window.devToolsExtension() : (f: any) => f,
   ));
 
   const { hot } = module as any;
   if (hot) {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
-      const titleReducer = require('./reducers/titles');
-      const nextReducer = combineReducers({
-        routing: routerReducer,
-        titleReducer,
-      });
+      const nextReducer = combineReducers(require('./reducers'));
       createdStore.replaceReducer(nextReducer);
     });
   }
@@ -44,13 +38,21 @@ function configureStore(initialState: any): any {
   return createdStore;
 }
 
-export const store = configureStore({});
+const store = configureStore({});
 
-/* Initial history */
-let routerHistory: any;
-if (config.historyBackend === 'browserHistory') {
-  routerHistory = reactRouter.browserHistory;
+/* History */
+let history: History;
+if (config.historyBackend === 'hashHistory') {
+  history = createHashHistory({
+    basename: config.urlPrefix,
+  });
 } else {
-  routerHistory = reactRouter.hashHistory;
+  history = createBrowserHistory({
+    basename: config.urlPrefix,
+  });
 }
-export const history = syncHistoryWithStore(routerHistory, store);
+
+export {
+  store,
+  history,
+};

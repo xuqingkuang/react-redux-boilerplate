@@ -8,6 +8,7 @@
 Another template that makes React and redux web app developmet easier.
 
 > Babel 6 version was stopped maintenance, please look at [v1.0.0](https://github.com/xuqingkuang/react-redux-boilerplate/releases/tag/v1.0.0) if you need.
+> React 15 version was stopped maintenance, please look at [v2.0.0-beta.3](https://github.com/xuqingkuang/react-redux-boilerplate/releases/tag/v2.0.0-beta.3) if you need.
 
 ## Demo
 
@@ -15,18 +16,17 @@ Another template that makes React and redux web app developmet easier.
 
 ## Features
 
-* TypeScript 2, no Babel required any more
+* TypeScript 2
 * Unit testing covered with Jest
 * Different configs for different environment.
-* React 15
-* React Router 3
-* Redux 3.6 (Predictable state container)
+* React 16
+* React Router 4
+* Redux 3.7 (Predictable state container)
 * Sass css pre-processor with lint
-* Yarn supported
-* Webpack 2 + webpack-dev-server 2
+* Webpack 4 + webpack-dev-server next
 * Redux Devtools for Chrome Extension supported (Better than redux-logger)
 * Browser live reload
-* Using Webpack DllReferencePlugin plugin to optimize build speed
+* Package size analysis with webpack-bundle-analyzer
 
 If you are interested, please read the `package.json` file for all installed modules.
 
@@ -36,27 +36,14 @@ Feel free to contribute or fork it if you find this repo could help the communit
 
 ### Requirements
 
-* Node 6 LTS for building
+* Node 8 LTS for building
 
 ### Start
 
 1. Clone the repo - `$ git clone https://github.com/xuqingkuang/react-redux-boilerplate`
-2. Install the dependencies - `$ cd react-redux-boilerplate && yarn`
+2. Install the dependencies - `$ cd react-redux-boilerplate && npm install`
 
 ## Executions
-
-### Build the vendor libraries
-
-    $ npm run buildvendor
-
-The command will genderate the vendors package at first time. It's using `webpack.DllReferencePlugin`
-to splite code to be `vendor.js` and `app.js`,
-
-`vendor.js` contains the libraries defined in `webpack-vendor.config.js`, you may add more
-items if you need splite the dependencies building from application.
-`app.js` was the code build from `src`.
-
-By using this feature, the build speed is much faster.
 
 ### Start develop environment
 
@@ -96,15 +83,13 @@ The all files in `dist` folder will be removed.
     |   `-- file-mock                 - Mock for static handler
     |-- assets                        - Static resources
     |   |-- imgs                      - Static Images
-    |   |-- index.html                - Entrance html
-    |   `-- vendor.js                 - The file contains libraries
+    |   `-- index.html                - Entrance html
     |-- coverage                      - Testing coverage report generated
     |   `-- icov-report
     |       `-- index.html            - Graphic testing coverage report
     |-- src                           - Source codes
-    |   |-- app.tsx                   - Entrance Javascript
+    |   |-- index.tsx                 - Entrance Javascript
     |   |-- prepare.ts                - App preparings, init history and store.
-    |   |-- routes.tsx                - Routes config
     |   |-- constants.ts              - Redux constants
     |   |-- actions                   - Redux actions
     |   |   |-- __tests__             - Unit testing folder, following are same
@@ -113,11 +98,11 @@ The all files in `dist` folder will be removed.
     |   |   `-- titles.ts
     |   |-- components                - React Components
     |   |   |-- home
-    |   |   |   |-- home.tsx
-    |   |   |   `-- index.tsx
+    |   |   |   |-- index.tsx
+    |   |   |   `-- welcome.tsx
     |   |   |-- index.ts
-    |   |   |-- layout.tsx
-    |   |   |-- layout.scss           - Sass for layout.tsx
+    |   |   |-- app.tsx               - Application and reoutes
+    |   |   |-- app.scss              - Sass for layout.tsx
     |   |   `-- not-found.tsx
     |   |-- config                    - Runtime config
     |   |   |-- index.ts              - Default config
@@ -129,8 +114,7 @@ The all files in `dist` folder will be removed.
     |   |-- app.js                    - Built Javascript
     |   |-- app.js.map                - Source map for Built Javascript
     |   |-- imgs                      - Static images
-    |   |-- index.html                - Entrance html
-    |   `-- vendor.js                 - The file contains libraries
+    |   `-- index.html                - Entrance html
     |-- .travis.yml                   - Travis CI config
     |-- LICENSE                       - Copyright notice
     |-- README.md                     - This file

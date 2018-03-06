@@ -9,6 +9,7 @@ const HomeLayout: StatelessComponent<any> = (): any => {
       <p>
         This automatic page generator is the easiest way to create beautiful
         pages for all of your projects. Author your page content here
+        { ' ' }
         <a href="https://guides.github.com/features/mastering-markdown/">
           using GitHub Flavored Markdown
         </a>,
@@ -44,15 +45,19 @@ const HomeLayout: StatelessComponent<any> = (): any => {
         In 2007, Chris Wanstrath
         (<a href="https://github.com/defunkt">@defunkt</a>),
         PJ Hyett (<a href="https://github.com/pjhyett">@pjhyett</a>),
-        and Tom Preston-Werner (<a href="https://github.com/mojombo">@mojombo</a>)
+        and Tom Preston-Werner(<a href="https://github.com/mojombo">@mojombo</a>)
         founded GitHub.
       </p>
       <h3>Support or Contact</h3>
       <p>
         Having trouble with Pages? Check out our
+        { ' ' }
         <a href="https://help.github.com/pages">documentation</a>
+        { ' ' }
         or
+        { ' ' }
         <a href="https://github.com/contact">contact support</a>
+        { ' ' }
         and we’ll help you sort it out.
       </p>
     </div>
