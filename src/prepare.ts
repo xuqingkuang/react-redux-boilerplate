@@ -23,7 +23,7 @@ function configureStore(initialState: any): any {
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
     applyMiddleware(),
-    window.devToolsExtension ? window.devToolsExtension() : (f: any) => f,
+    (process.env.NODE_ENV !== 'production' && window.devToolsExtension) ? window.devToolsExtension() : (f: any) => f,
   ));
 
   const { hot } = module as any;

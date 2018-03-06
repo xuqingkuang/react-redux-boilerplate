@@ -31,7 +31,7 @@
     "lint": "tslint --force \"src/**/*.ts*\" && sass-lint -v -q src/**/*.scss",
     "test": "jest --no-cache",
     "analysis": "webpack --config webpack-production.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json",
-    "ghpages": "minify assets/index.html > dist/index.html && gh-pages -d dist"
+    "ghpages": "gh-pages -d dist"
   },
   "jest": {
     "collectCoverage": true,
@@ -84,7 +84,6 @@
     "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.8.0",
     "jest": "^22.4.2",
-    "minify": "^3.0.4",
     "node-sass": "^4.7.2",
     "react-hot-loader": "^4.0.0",
     "react-test-renderer": "^16.2.0",
