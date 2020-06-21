@@ -25,7 +25,7 @@ function setup(): ISetup {
 describe('components', () => {
   describe('NotFound', () => {
     it('should render correctly', () => {
-      const {output} = setup();
+      const { output } = setup();
 
       expect(output.type).toBe('div');
       expect(output.props.children).toBe('The page you request is not exist.');

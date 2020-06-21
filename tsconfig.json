@@ -22,10 +22,7 @@
       "es2015.symbol"
     ]
   },
-  "files": [
-    "./src/index.tsx"
-  ],
-  "exclude": [
-    "node_modules"
+  "include": [
+    "./src"
   ]
 }

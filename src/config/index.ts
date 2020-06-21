@@ -1,10 +1,12 @@
+import productioConfig from './production';
+
 interface IConfig {
   historyBackend?: string;
   urlPrefix?: string;
 }
 
 /* Default config for develope enviroment */
-let config: IConfig = {
+const devConfig: IConfig = {
   /* React router history backend */
   historyBackend: 'browserHistory',
 
@@ -14,10 +16,13 @@ let config: IConfig = {
   urlPrefix: '/',
 };
 
-/* Construct configs from environment */
-if (process && process.env.NODE_ENV === 'production' ) {
-  config = {...config, ...require('./production').default};
-}
+const config = (() => {
+  /* Construct configs from environment */
+  if (process && process.env.NODE_ENV === 'production') {
+    return { ...devConfig, ...productioConfig };
+  }
+  return devConfig;
+})();
 
 /* Freezed the config object, make it not able to be modified */
 Object.freeze(config);

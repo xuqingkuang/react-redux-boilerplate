@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 import { GET_NEXT_TITLE, TITLES } from '../constants';
 
 const getNextTitle = (title?: string) => {

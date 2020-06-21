@@ -1,18 +1,18 @@
-declare var window: any;
-
 /* Redux */
-import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
+import {
+  applyMiddleware, combineReducers, compose, createStore,
+} from 'redux';
 
 /* React Router */
-import { History } from 'history';
-import createBrowserHistory from 'history/createBrowserHistory';
-import createHashHistory from 'history/createHashHistory';
+import { createBrowserHistory, createHashHistory } from 'history';
 
 /* Reducers */
 import * as reducers from './reducers';
 
 /* App configs */
 import config from './config';
+
+declare let window: any;
 
 /* Combine Reducers */
 const reducer = combineReducers(reducers);
@@ -26,31 +26,18 @@ function configureStore(initialState: any): any {
     (process.env.NODE_ENV !== 'production' && window.devToolsExtension) ? window.devToolsExtension() : (f: any) => f,
   ));
 
-  const { hot } = module as any;
-  if (hot) {
-    // Enable Webpack hot module replacement for reducers
-    hot.accept('./reducers', () => {
-      const nextReducer = combineReducers(require('./reducers'));
-      createdStore.replaceReducer(nextReducer);
-    });
-  }
-
   return createdStore;
 }
 
 const store = configureStore({});
 
 /* History */
-let history: History;
-if (config.historyBackend === 'hashHistory') {
-  history = createHashHistory({
-    basename: config.urlPrefix,
-  });
-} else {
-  history = createBrowserHistory({
-    basename: config.urlPrefix,
-  });
-}
+const history = (() => {
+  if (config.historyBackend === 'hashHistory') {
+    return createHashHistory();
+  }
+  return createBrowserHistory();
+})();
 
 export {
   store,

@@ -1,19 +1,10 @@
-/**
- * 
- * Webpack config for version 4.
- * 
- * TODO: Waiting for rewrite with Typescript - https://webpack.js.org/configuration/configuration-languages/#typescript
- */
-
 const path                = require('path');
 const webpack             = require('webpack');
-const PolyfillsPlugin     = require('webpack-polyfill-service-plugin');
 
 module.exports = {
   mode: 'development',
   entry: {
     app: [
-      'react-hot-loader/patch',
       './src'
     ]
   },
@@ -23,15 +14,6 @@ module.exports = {
     filename: '[name].js',
   },
   devtool: 'eval',
-  plugins: [
-    new PolyfillsPlugin({
-      minify: true,
-      features: {
-        "fetch": {flags: ['always', 'gated']},
-      },
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -74,7 +56,6 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               babelrc: true,
-              plugins: ['react-hot-loader/babel'],
             },
           },
           'ts-loader'
@@ -82,8 +63,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.less$/,
+        loaders: ['style-loader', 'css-loader', 'less-loader'],
         exclude: /node_modules/,
       },
       {
