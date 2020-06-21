@@ -17,7 +17,7 @@ function setup(): ISetup {
   };
 
   const renderer = ShallowRenderer.createRenderer();
-  renderer.render(<Welcome getNextTitle={ props.getNextTitle } />);
+  renderer.render(<Welcome getNextTitle={props.getNextTitle} />);
   const output = renderer.getRenderOutput();
   jest.clearAllTimers();
 
@@ -35,9 +35,9 @@ describe('components', () => {
       expect(output.type).toBe('h3');
     });
     it('interval should create/destroy after component mounted/umounted', () => {
-      const { renderer, props } = setup();
-      const component = renderer.render(<Welcome getNextTitle={ props.getNextTitle } />);
-      const output = renderer.getRenderOutput();
+      // const { renderer, props } = setup();
+      // const component = renderer.render(<Welcome getNextTitle={props.getNextTitle} />);
+      // const output = renderer.getRenderOutput();
       // expect(output.interval).toBe(1);
       jest.runOnlyPendingTimers();
       // output.componentWillUnmount();

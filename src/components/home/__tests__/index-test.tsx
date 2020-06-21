@@ -25,11 +25,11 @@ function setup(): ISetup {
 describe('components', () => {
   describe('Layout', () => {
     it('should render correctly', () => {
-      const {output} = setup();
+      const { output } = setup();
 
       expect(output.type).toBe('div');
 
-      const children = output.props.children;
+      const { children } = output.props;
       expect(children[0].type.displayName).toBe('Connect(Welcome)');
     });
   });

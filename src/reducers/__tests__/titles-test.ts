@@ -6,14 +6,17 @@ import * as constants from '../../constants';
 describe('titles reducer', () => {
   it('should return the initial state', () => {
     expect(
-      titleReducer(undefined, {}),
+      titleReducer(undefined, {
+        type: constants.GET_NEXT_TITLE,
+        title: constants.TITLES[0],
+      }),
     ).toEqual({
       title: constants.TITLES[0],
     });
   });
 
   it('Should return correct title', () => {
-    for (const title of constants.TITLES) {
+    constants.TITLES.forEach((title) => {
       const action = {
         type: constants.GET_NEXT_TITLE,
         title,
@@ -23,6 +26,6 @@ describe('titles reducer', () => {
       ).toEqual({
         title,
       });
-    }
+    });
   });
 });

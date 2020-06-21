@@ -1,2 +1,1 @@
-import * as titleActions from './titles';
-export { titleActions };
+export * from './titles';

@@ -11,7 +11,7 @@ interface ISetup {
 function setup(): ISetup {
   const props = {
     children: (
-      <div></div>
+      <div />
     ),
   };
 
@@ -24,14 +24,15 @@ function setup(): ISetup {
     output,
     renderer,
   };
-};
+}
 
 describe('components', () => {
   describe('App', () => {
     it('should render correctly', () => {
-      const {output} = setup();
-
+      setup();
       /*
+      const { output } = setup();
+
       expect(output.type).toBe('div');
 
       const [header, section, footer] = output.props.children;

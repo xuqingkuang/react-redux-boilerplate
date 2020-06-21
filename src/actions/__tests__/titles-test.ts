@@ -14,7 +14,7 @@ describe('titles actions', () => {
   });
 
   it('Should return correct next title', () => {
-    for (let i = 0; i < constants.TITLES.length - 1; i++) {
+    for (let i = 0; i < constants.TITLES.length - 1; i += 1) {
       expect(
         getNextTitle(constants.TITLES[i]),
       ).toEqual({
