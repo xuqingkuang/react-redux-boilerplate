@@ -95,7 +95,7 @@
     "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.0",
     "style-loader": "^1.2.1",
-    "stylelint": "^13.6.1",
+    "stylelint": "^15.10.1",
     "ts-jest": "^26.1.0",
     "ts-loader": "^7.0.5",
     "tslib": "^2.0.0",
